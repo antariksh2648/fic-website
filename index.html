@@ -1,0 +1,1755 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#172231">
+<link rel="icon" href="https://static.wixstatic.com/media/ba4451_dd199f032baf42cfb18d0980ac1a9a2f~mv2.png/v1/fill/w_64,h_64,al_c,q_85/favicon.png">
+<title>FIC IIM Rohtak</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Finance and Investment Club, IIM Rohtak: publications, finance games, calculators and events.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: navy-charcoal masthead and hero with FIC green as the brand accent and gold highlights; editorial 12-col grid on a neutral paper page; data in mono. */
+:root{
+  --paper:#F5F5F1; --surface:#FFFFFF; --sunk:#ECEDE7; --ink:#1A1F27; --muted:#5B6370; --line:#D9DBD4;
+  --ever:#0F4D37; --ever-2:#1C6B4D; --ever-soft:#E0EDE6; --on-ever:#F5F5F1;
+  --band:#172231; --band-ink:#EEF1F4; --band-muted:#A8B3C1; --band-2:#123A2C; --ticker:#0F141B;
+  --gold:#AC812C; --gold-soft:#F3EAD6; --plum:#5B3A55;
+  --up:#17784A; --down:#B23A2A; --warn:#9A6A00; --up-soft:#DDF0E5; --down-soft:#F6E0DB; --warn-soft:#F5EAD0;
+  --f-display:"Newsreader",Georgia,"Times New Roman",serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --r:6px; --max:1180px; --shadow:0 1px 2px rgba(23,34,49,.06),0 6px 18px rgba(23,34,49,.08);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0D1117; --surface:#151B23; --sunk:#10151C; --ink:#E6EAEF; --muted:#9AA4B1; --line:#27303B;
+  --ever:#4CAF83; --ever-2:#6CC49B; --ever-soft:#16291F; --on-ever:#08110D;
+  --band:#131B26; --band-ink:#E6EAEF; --band-muted:#95A2B3; --band-2:#0F2A20; --ticker:#0A0E13;
+  --gold:#D6B162; --gold-soft:#2E2715; --plum:#B990AF;
+  --up:#4CC285; --down:#EE7A66; --warn:#E0B24A; --up-soft:#15301F; --down-soft:#3A1C17; --warn-soft:#33290F;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.25); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0D1117; --surface:#151B23; --sunk:#10151C; --ink:#E6EAEF; --muted:#9AA4B1; --line:#27303B;
+  --ever:#4CAF83; --ever-2:#6CC49B; --ever-soft:#16291F; --on-ever:#08110D;
+  --band:#131B26; --band-ink:#E6EAEF; --band-muted:#95A2B3; --band-2:#0F2A20; --ticker:#0A0E13;
+  --gold:#D6B162; --gold-soft:#2E2715; --plum:#B990AF;
+  --up:#4CC285; --down:#EE7A66; --warn:#E0B24A; --up-soft:#15301F; --down-soft:#3A1C17; --warn-soft:#33290F;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.25); color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+img{max-width:100%}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--ever-2)}
+a:hover{color:var(--ever)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:3px}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:500;line-height:1.15;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:clamp(2.3rem,5.4vw,4.1rem);font-weight:500}
+h2{font-size:clamp(1.65rem,3vw,2.3rem)}
+h3{font-size:1.3rem}
+h4{font-size:1.08rem;font-weight:600}
+p{margin:0}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.muted{color:var(--muted)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums;font-family:var(--f-mono)}
+.small{font-size:.85rem}
+.stack{display:flex;flex-direction:column;gap:12px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.grid{display:grid;gap:20px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- masthead ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--surface);border-bottom:1px solid var(--line)}
+.top .bar{display:flex;align-items:center;gap:14px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);flex-shrink:0}
+.mark{width:40px;height:40px;border-radius:50%;background:var(--band);color:var(--gold);display:grid;place-items:center;font-family:var(--f-display);font-size:1.3rem;font-weight:600;position:relative;overflow:hidden;flex-shrink:0}
+.mark img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff}
+.brand b{font-family:var(--f-display);font-size:1.12rem;font-weight:600;display:block;line-height:1.1}
+.brand span{font-size:.72rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+nav.main{display:flex;gap:0;margin-left:auto;flex-wrap:nowrap;white-space:nowrap}
+nav.main a{text-decoration:none;color:var(--ink);font-size:.84rem;font-weight:500;padding:7px 7px;border-radius:4px}
+nav.main a:hover{background:var(--sunk)}
+nav.main a[aria-current="page"]{color:var(--ever-2);box-shadow:inset 0 -2px 0 var(--gold)}
+.tools-top{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.iconbtn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:4px;height:34px;min-width:34px;padding:0 9px;cursor:pointer;font:inherit;font-size:.85rem}
+.iconbtn:hover{background:var(--sunk)}
+#menuBtn{display:none}
+.search{position:relative}
+.top .search input{height:34px;border:1px solid var(--line);background:var(--sunk);color:var(--ink);border-radius:4px;padding:0 10px;font:inherit;font-size:.85rem;width:150px}
+.search .res{position:absolute;right:0;top:40px;width:min(380px,92vw);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);max-height:60vh;overflow:auto;z-index:60}
+.search .res a{display:block;padding:9px 12px;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line);font-size:.88rem}
+.search .res a:hover,.search .res a.on{background:var(--sunk)}
+.search .res small{display:block;color:var(--muted);font-size:.72rem;font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.08em}
+@media (max-width:1380px){
+  #menuBtn{display:inline-block}
+  nav.main{display:none;position:absolute;left:0;right:0;top:100%;background:var(--surface);border-bottom:1px solid var(--line);flex-direction:column;padding:8px max(16px,env(safe-area-inset-right,0px)) 14px max(16px,env(safe-area-inset-left,0px))}
+  nav.main.open{display:flex}
+  nav.main a{padding:11px 8px;font-size:1rem}
+  .tools-top{margin-left:auto}
+}
+@media (max-width:560px){.top .search input{width:120px}.brand span{display:none}}
+
+/* ticker */
+.ticker{background:var(--ticker);color:var(--band-ink);font-family:var(--f-mono);font-size:.78rem;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.06)}
+.ticker .in{display:flex;align-items:center;gap:14px;padding-block:7px}
+.ticker .lab{color:var(--gold);flex-shrink:0;letter-spacing:.1em;text-transform:uppercase}
+.ticker .track{overflow:hidden;flex:1;min-width:0;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+.ticker .belt{display:inline-flex;gap:34px;white-space:nowrap;animation:belt 80s linear infinite}
+.ticker:hover .belt{animation-play-state:paused}
+.ticker a{color:var(--band-ink);text-decoration:none}
+.ticker a:hover{color:var(--gold)}
+.ticker .tag{color:var(--band-muted);margin-right:6px}
+@keyframes belt{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker .belt{animation:none}}
+
+/* ---------- views ---------- */
+.view{display:none}
+.view.on{display:block}
+section.blk{padding-block:56px}
+section.blk + section.blk{border-top:1px solid var(--line)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:26px}
+.head .stack{gap:6px;max-width:640px}
+.lede{font-size:1.05rem;color:var(--muted);max-width:62ch}
+.crumbs{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);padding-top:22px;letter-spacing:.04em}
+.crumbs a{color:var(--muted)}
+
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:4px;padding:10px 16px;font:inherit;font-weight:600;font-size:.9rem;cursor:pointer;text-decoration:none;border:1px solid transparent;line-height:1.2}
+.btn.pri{background:var(--ever);color:var(--on-ever)}
+.btn.pri:hover{background:var(--ever-2);color:var(--on-ever)}
+.btn.gold{background:var(--gold);color:#1A1406}
+.btn.gold:hover{filter:brightness(1.07);color:#1A1406}
+.btn.ghost{border-color:var(--line);background:var(--surface);color:var(--ink)}
+.btn.ghost:hover{border-color:var(--ever-2);color:var(--ink)}
+.btn.line-light{border-color:rgba(232,239,235,.35);color:var(--band-ink);background:transparent}
+.btn.line-light:hover{border-color:var(--gold);color:var(--gold)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.sm{padding:7px 11px;font-size:.82rem}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.pad{padding:20px}
+.chip{display:inline-flex;align-items:center;gap:5px;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);border-radius:3px;padding:2px 7px;color:var(--muted);background:var(--surface)}
+.chip.gold{border-color:var(--gold);color:var(--gold)}
+.chip.ever{border-color:var(--ever-2);color:var(--ever-2)}
+.chip.warn{border-color:var(--warn);color:var(--warn);background:var(--warn-soft)}
+.chip.up{border-color:var(--up);color:var(--up)}
+.chip.down{border-color:var(--down);color:var(--down)}
+.note{border-left:3px solid var(--gold);background:var(--gold-soft);padding:10px 14px;border-radius:0 var(--r) var(--r) 0;font-size:.86rem}
+.note.ever{border-color:var(--ever-2);background:var(--ever-soft)}
+
+/* ---------- hero ---------- */
+.hero{background:var(--band);color:var(--band-ink);position:relative;overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.55;pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:44px;padding-block:64px 56px;align-items:center}
+.hero h1{color:var(--band-ink)}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero .lede{color:var(--band-muted);margin-top:18px}
+.hero .ctas{margin-top:28px}
+.hero .side{display:flex;flex-direction:column;gap:16px}
+.hero .side .k{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--band-muted)}
+.hero .side .v{font-family:var(--f-display);font-size:1.25rem;line-height:1.3}
+.hero .side a{color:var(--band-ink)}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;padding-block:48px 44px}.hero .side{max-width:560px}}
+
+/* pulse */
+.pulse{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden}
+.pulse .q{padding:14px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:2px}
+.pulse .q .n{font-size:.75rem;color:var(--muted);font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.06em}
+.pulse .q .p{font-family:var(--f-mono);font-size:1.15rem;font-variant-numeric:tabular-nums}
+.pulse .q .c{font-family:var(--f-mono);font-size:.8rem}
+.up-t{color:var(--up)}.down-t{color:var(--down)}
+.pulse .q:nth-child(4n){border-right:0}.pulse .q:nth-last-child(-n+4){border-bottom:0}
+@media (max-width:640px){.pulse{grid-template-columns:repeat(2,minmax(0,1fr))}.pulse .q:nth-child(4n){border-right:1px solid var(--line)}.pulse .q:nth-child(2n){border-right:0}.pulse .q:nth-last-child(-n+4){border-bottom:1px solid var(--line)}.pulse .q:nth-last-child(-n+2){border-bottom:0}}
+.pulse-meta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-top:12px;font-size:.82rem}
+
+/* publications covers */
+.pubs{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:980px){.pubs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.pubs{grid-template-columns:1fr}}
+.pub{display:flex;flex-direction:column;overflow:hidden;transition:transform .18s,box-shadow .18s}
+.pub:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.cover{aspect-ratio:380/494;max-width:100%;position:relative;padding:18px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;color:#F4F1E8}
+.cover .ct{font-family:var(--f-display);font-size:1.75rem;line-height:1;letter-spacing:-.02em}
+.cover .cs{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+.cover .ci{font-family:var(--f-mono);font-size:.72rem;opacity:.9}
+.cv-arb{background:#0E3B2C}
+.cv-arb::after{content:"";position:absolute;right:-30px;bottom:-30px;width:160px;height:160px;border:1px solid rgba(201,163,84,.6);border-radius:50%;box-shadow:0 0 0 22px rgba(201,163,84,.08),0 0 0 44px rgba(201,163,84,.05)}
+.cv-cc{background:#2A1E1A}
+.cv-cc::after{content:"";position:absolute;inset:auto 0 0 0;height:46%;background:repeating-linear-gradient(-45deg,rgba(178,58,42,.55) 0 2px,transparent 2px 11px)}
+.cv-pf{background:#16201B}
+.cv-pf::after{content:"";position:absolute;left:0;right:0;bottom:22%;height:1px;background:rgba(201,163,84,.8);box-shadow:0 -24px 0 rgba(255,255,255,.08),0 -48px 0 rgba(255,255,255,.08),0 24px 0 rgba(255,255,255,.08)}
+.cv-fc{background:#A9802F;color:#1A1406}
+.cv-fc::after{content:"Φ";position:absolute;right:10px;bottom:-30px;font-family:var(--f-display);font-size:9rem;opacity:.18;line-height:1}
+.cv-fs{background:#165A43}
+.cv-fs::after{content:"";position:absolute;right:16px;bottom:16px;width:70px;height:70px;background:linear-gradient(transparent 49%,rgba(255,255,255,.3) 49% 51%,transparent 51%),linear-gradient(90deg,transparent 49%,rgba(255,255,255,.3) 49% 51%,transparent 51%);border:1px solid rgba(255,255,255,.3)}
+.pub .body{padding:16px;display:flex;flex-direction:column;gap:9px;flex:1}
+.pub .body p{font-size:.88rem;color:var(--muted)}
+.pub .latest{font-size:.82rem;border-top:1px solid var(--line);padding-top:9px;margin-top:auto}
+.pub .latest b{font-weight:600}
+
+/* featured game */
+.feature{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.feature .art{background:var(--sunk);min-height:240px;position:relative}
+.feature .art canvas{position:absolute;inset:0;width:100%;height:100%}
+.feature .txt{padding:28px;display:flex;flex-direction:column;gap:14px;justify-content:center}
+.meta{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+.meta b{color:var(--ink);font-weight:500;display:block;font-size:.95rem}
+@media (max-width:760px){.feature{grid-template-columns:1fr}}
+
+/* glance */
+.glance{grid-template-columns:repeat(6,minmax(0,1fr));gap:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.glance .s{padding:18px 14px 16px 0;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:4px;min-width:0}
+.glance .s:last-child{border-right:0}
+.glance .s + .s{padding-left:14px}
+.glance .big{font-family:var(--f-display);font-size:2.4rem;line-height:1;font-variant-numeric:tabular-nums}
+.glance .lb{font-size:.82rem;color:var(--muted)}
+@media (max-width:900px){.glance{grid-template-columns:repeat(3,minmax(0,1fr))}.glance .s:nth-child(3n){border-right:0}.glance .s:nth-child(3n+1){padding-left:0}.glance .s{border-bottom:1px solid var(--line)}}
+@media (max-width:480px){.glance{grid-template-columns:repeat(2,minmax(0,1fr))}.glance .s{padding-left:0!important;border-right:0!important}}
+
+/* events */
+.ev-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.ev{display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:18px;padding:16px 0;border-bottom:1px solid var(--line);align-items:start}
+.ev .when{font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+.ev h4{margin-bottom:3px}
+.ev p{font-size:.9rem;color:var(--muted)}
+@media (max-width:640px){.ev{grid-template-columns:1fr;gap:6px}}
+.empty{border:1px dashed var(--line);border-radius:var(--r);padding:22px;text-align:left;color:var(--muted);font-size:.92rem;background:var(--surface)}
+
+/* forms */
+label.f{display:flex;flex-direction:column;gap:5px;font-size:.84rem;font-weight:500}
+input[type=text],input[type=email],input[type=number],select,textarea{font:inherit;font-size:.92rem;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:9px 10px;width:100%;min-width:0}
+input:focus,select:focus,textarea:focus{border-color:var(--ever-2);outline:none;box-shadow:0 0 0 3px var(--ever-soft)}
+input[aria-invalid=true],textarea[aria-invalid=true]{border-color:var(--down)}
+.err{color:var(--down);font-size:.78rem;font-weight:400}
+.ok-msg{color:var(--up);font-size:.88rem}
+input[type=range]{width:100%;accent-color:var(--ever-2)}
+.check{display:flex;gap:8px;align-items:flex-start;font-size:.84rem}
+.check input{margin-top:4px;accent-color:var(--ever-2)}
+
+/* newsletter band */
+.community{background:var(--band-2);color:var(--band-ink)}
+.community .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;padding-block:52px}
+.community h2{color:var(--band-ink)}
+.community .lede{color:var(--band-muted)}
+.community .card{background:var(--surface);color:var(--ink)}
+@media (max-width:820px){.community .wrap{grid-template-columns:1fr}}
+
+/* footer */
+footer{border-top:1px solid var(--line);background:var(--surface);font-size:.87rem}
+footer .wrap{display:grid;grid-template-columns:1.4fr repeat(3,minmax(0,1fr));gap:30px;padding-block:44px 26px}
+footer h4{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:10px}
+footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
+footer a{color:var(--ink);text-decoration:none}
+footer a:hover{color:var(--ever-2);text-decoration:underline}
+footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:.78rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+@media (max-width:820px){footer .wrap{grid-template-columns:1fr 1fr}}
+@media (max-width:460px){footer .wrap{grid-template-columns:1fr}}
+
+/* archive */
+.filters{display:grid;grid-template-columns:2fr repeat(3,minmax(0,1fr));gap:10px;margin-bottom:18px}
+@media (max-width:760px){.filters{grid-template-columns:1fr 1fr}.filters .q{grid-column:1/-1}}
+.arch{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.item{padding:14px 16px;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:var(--ink);transition:border-color .15s}
+.item:hover{border-color:var(--ever-2);color:var(--ink)}
+.item .t{font-family:var(--f-display);font-size:1.08rem;line-height:1.25}
+.item .m{display:flex;gap:6px;flex-wrap:wrap}
+.item .src{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em}
+.src.arb{color:var(--ever-2)}.src.cc{color:var(--down)}.src.pf{color:var(--gold)}.src.fs{color:var(--ever-2)}.src.fc{color:var(--gold)}
+.count{font-family:var(--f-mono);font-size:.8rem;color:var(--muted);margin-bottom:10px}
+
+/* arena */
+.arena-nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px;border-bottom:1px solid var(--line)}
+.arena-nav button{font:inherit;font-size:.88rem;font-weight:500;background:none;border:0;border-bottom:2px solid transparent;padding:10px 12px;cursor:pointer;color:var(--muted)}
+.arena-nav button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--gold)}
+.arena-nav button:hover{color:var(--ink)}
+.game-grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.gcard{padding:18px;display:flex;flex-direction:column;gap:10px;cursor:pointer;text-align:left;font:inherit;color:var(--ink)}
+.gcard:hover{border-color:var(--ever-2)}
+.gcard p{font-size:.88rem;color:var(--muted)}
+.panel{display:none}
+.panel.on{display:block}
+.game{padding:24px}
+.ghead{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:start;margin-bottom:18px}
+.progress{height:6px;background:var(--sunk);border-radius:3px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--ever-2);transition:width .3s}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{text-align:left;font:inherit;font-size:.95rem;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:12px 14px;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.opt:hover:not(:disabled){border-color:var(--ever-2);background:var(--sunk)}
+.opt .k{font-family:var(--f-mono);font-size:.78rem;color:var(--muted);padding-top:2px}
+.opt.right{border-color:var(--up);background:var(--up-soft)}
+.opt.wrong{border-color:var(--down);background:var(--down-soft)}
+.opt:disabled{cursor:default}
+.explain{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
+@media (max-width:820px){.two{grid-template-columns:1fr}}
+.slider-row{display:grid;grid-template-columns:110px minmax(0,1fr) 92px;gap:12px;align-items:center;font-size:.9rem}
+.slider-row .num{text-align:right}
+@media (max-width:420px){.slider-row{grid-template-columns:86px minmax(0,1fr) 74px;gap:8px}}
+.statline{display:flex;gap:22px;flex-wrap:wrap}
+.stat .k{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.stat .v{font-family:var(--f-mono);font-size:1.25rem;font-variant-numeric:tabular-nums}
+table.t{border-collapse:collapse;width:100%;font-size:.86rem}
+table.t th,table.t td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+table.t th:first-child,table.t td:first-child{text-align:left}
+table.t th{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+table.t td{font-variant-numeric:tabular-nums}
+table.t .hl{background:var(--gold-soft);font-weight:600}
+.scroll{overflow-x:auto}
+.clue{border:1px solid var(--line);border-radius:4px;padding:12px 14px;background:var(--sunk);font-size:.92rem}
+.clue .lab{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:3px}
+.verdict{border-radius:var(--r);padding:16px 18px;border:1px solid var(--line)}
+.verdict.good{background:var(--up-soft);border-color:var(--up)}
+.verdict.bad{background:var(--down-soft);border-color:var(--down)}
+.verdict.mid{background:var(--warn-soft);border-color:var(--warn)}
+
+/* crossword */
+.xw-wrap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:26px;align-items:start}
+@media (max-width:820px){.xw-wrap{grid-template-columns:1fr}}
+.xw-scroll{overflow-x:auto;max-width:100%}
+.xw{display:grid;gap:2px;width:max-content}
+.xw .c{width:34px;height:34px;position:relative}
+.xw .c.blk{background:transparent}
+.xw .c input{width:100%;height:100%;border:1px solid var(--line);border-radius:2px;text-align:center;font-family:var(--f-mono);font-size:1rem;text-transform:uppercase;padding:0;background:var(--surface);color:var(--ink)}
+.xw .c input.ok{background:var(--up-soft);border-color:var(--up)}
+.xw .c input.bad{background:var(--down-soft);border-color:var(--down)}
+.xw .c input.hint{color:var(--gold)}
+.xw .c sup{position:absolute;left:2px;top:0;font-size:.55rem;color:var(--muted);font-family:var(--f-mono);pointer-events:none;z-index:1}
+@media (max-width:420px){.xw .c{width:27px;height:27px}.xw .c input{font-size:.85rem}}
+.clues ol{padding-left:0;list-style:none;margin:6px 0 16px;display:flex;flex-direction:column;gap:6px;font-size:.9rem}
+.clues li{cursor:pointer;padding:3px 6px;border-radius:3px}
+.clues li:hover{background:var(--sunk)}
+.clues li.done{color:var(--muted);text-decoration:line-through}
+
+/* toolkit */
+.tk{display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px;align-items:start}
+.tk-list{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden;position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px)}
+.tk-list button{font:inherit;font-size:.9rem;text-align:left;padding:10px 14px;background:none;border:0;border-bottom:1px solid var(--line);color:var(--ink);cursor:pointer}
+.tk-list button:last-child{border-bottom:0}
+.tk-list button[aria-selected=true]{background:var(--ever-soft);color:var(--ever-2);font-weight:600;box-shadow:inset 3px 0 0 var(--gold)}
+@media (max-width:820px){.tk{grid-template-columns:1fr}.tk-list{position:static;flex-direction:row;overflow-x:auto}.tk-list button{border-bottom:0;border-right:1px solid var(--line);white-space:nowrap}}
+.calc-inputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.result{background:var(--band);color:var(--band-ink);border-radius:var(--r);padding:18px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.result .k{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--band-muted)}
+.result .v{font-family:var(--f-mono);font-size:1.35rem;font-variant-numeric:tabular-nums}
+.formula{font-family:var(--f-mono);font-size:.84rem;background:var(--sunk);border:1px solid var(--line);border-radius:4px;padding:12px 14px;overflow-x:auto;white-space:pre}
+
+/* team/speakers */
+.people{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.person{padding:16px;display:flex;gap:12px;align-items:center}
+.avatar{width:46px;height:46px;border-radius:50%;background:var(--ever-soft);color:var(--ever-2);display:grid;place-items:center;font-family:var(--f-display);font-weight:600;flex-shrink:0}
+.person b{display:block;font-weight:600}
+.person span{font-size:.82rem;color:var(--muted)}
+.spk{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.spk .card{padding:18px;display:flex;flex-direction:column;gap:8px}
+.quote{font-family:var(--f-display);font-size:1.3rem;line-height:1.35;font-style:italic;border-left:2px solid var(--gold);padding-left:16px}
+
+/* badges / points */
+.pts{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:20px;font-size:.88rem}
+.badges{display:flex;gap:6px;flex-wrap:wrap}
+.badge{font-family:var(--f-mono);font-size:.7rem;border:1px solid var(--line);border-radius:999px;padding:3px 9px;color:var(--muted);opacity:.55}
+.badge.got{opacity:1;color:var(--gold);border-color:var(--gold);background:var(--gold-soft)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:4px;font-size:.88rem;opacity:0;pointer-events:none;transition:all .25s;z-index:90;max-width:90vw}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.daily{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:24px;align-items:start}
+@media (max-width:820px){.daily{grid-template-columns:1fr}}
+  .two>*,.xw-wrap>*,.tk>*,.daily>*,.hero .wrap>*,.feature>*,.community .wrap>*{min-width:0}
+body.embed header.top,body.embed footer,body.embed .crumbs,body.embed-game .arena-nav,body.embed-game [data-view="arena"] .head{display:none!important}
+body.embed section.blk{padding-block:20px}
+/* photos from the original site */
+.ph{position:relative;overflow:hidden;background:var(--sunk)}
+.ph > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ph.contain > img{object-fit:contain;background:var(--surface)}
+.hero .photo{aspect-ratio:3/2;max-width:100%;border-radius:4px;border:1px solid rgba(238,241,244,.18);background:rgba(255,255,255,.04)}
+.hero .photo figcaption,.cap{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+.hero .latest-list{display:flex;flex-direction:column;gap:10px;border-top:1px solid rgba(238,241,244,.16);padding-top:14px}
+.hero .latest-list a{color:var(--band-ink);text-decoration:none;font-family:var(--f-display);font-size:1.08rem;line-height:1.3}
+.hero .latest-list a:hover{color:var(--gold)}
+.hero .latest-list span{display:block;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--band-muted)}
+.cover > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;background:var(--surface)}
+.thumb{width:56px;height:56px;border-radius:4px;flex-shrink:0;border:1px solid var(--line)}
+.item .top{display:flex;gap:12px;align-items:flex-start}
+.ev.has-img{grid-template-columns:120px 132px minmax(0,1fr) auto}
+.ev .evimg{width:132px;aspect-ratio:4/3;border-radius:4px;border:1px solid var(--line)}
+@media (max-width:640px){.ev.has-img{grid-template-columns:1fr}.ev .evimg{width:100%;max-width:320px}}
+.avatar{position:relative;overflow:hidden}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.person .avatar{width:64px;height:64px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.gallery button{padding:0;border:1px solid var(--line);border-radius:4px;cursor:zoom-in;aspect-ratio:4/3;font:inherit;color:var(--muted)}
+.gallery button .fb{position:absolute;inset:0;display:grid;place-items:center;padding:10px;font-size:.8rem;text-align:center}
+.lightbox{position:fixed;inset:0;background:rgba(10,14,19,.88);z-index:95;display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lightbox img{max-width:min(1100px,100%);max-height:80vh;border-radius:4px;background:#fff}
+.lightbox p{color:#EEF1F4;text-align:center;margin-top:10px;font-size:.9rem}
+.lightbox button{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:calc(14px + env(safe-area-inset-right,0px))}
+.about-photo{aspect-ratio:17/10;max-width:100%;border-radius:var(--r);border:1px solid var(--line)}
+.emblem{width:110px;aspect-ratio:332/297;max-width:100%}
+svg text{fill:var(--muted);font-family:var(--f-mono);font-size:11px}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="#home" aria-label="FIC IIM Rohtak home"><span class="mark" aria-hidden="true">Φ<img data-img="logo" alt=""></span><span><b>Finance &amp; Investment Club</b><span>IIM Rohtak</span></span></a>
+    <nav class="main" id="mainNav" aria-label="Main">
+      <a href="#home">Home</a><a href="#about">About FIC</a><a href="#publications">Publications</a><a href="#arena">Finance Arena</a><a href="#toolkit">Finance Toolkit</a><a href="#events">Events &amp; Speakers</a><a href="#team">Our Team</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="tools-top">
+      <div class="search"><label for="q" class="sr">Search the site</label><input id="q" type="text" placeholder="Search issues, games, tools" autocomplete="off"><div class="res" id="qres" hidden></div></div>
+      <button class="iconbtn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">Menu</button>
+    </div>
+  </div>
+  <div class="ticker" aria-label="Latest from FIC publications">
+    <div class="wrap in"><span class="lab">Latest</span><div class="track"><div class="belt" id="belt"></div></div></div>
+  </div>
+</header>
+
+<main>
+<!-- ============ HOME ============ -->
+<div class="view on" data-view="home">
+  <section class="hero">
+    <canvas id="heroCanvas" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Finance &amp; Investment Club · IIM Rohtak</p>
+        <h1 style="margin-top:14px">Think Finance. Decode Markets. <em>Build Conviction.</em></h1>
+        <p class="lede">A student-led club bridging classroom finance and real markets through publications, simulations, workshops and competitions.</p>
+        <div class="row ctas">
+          <a class="btn gold" href="#publications">Explore Publications</a>
+          <a class="btn line-light" href="#arena">Enter the Finance Arena</a>
+          <a class="btn line-light" href="#events">Discover Events</a>
+        </div>
+      </div>
+      <div class="side" id="heroSide"></div>
+    </div>
+  </section>
+
+  <section class="blk"><div class="wrap">
+    <div class="head"><div class="stack"><p class="eyebrow">Finance Pulse</p><h2>Market snapshot</h2></div></div>
+    <div class="pulse" id="pulse"></div>
+    <div class="pulse-meta"><span class="chip warn">Sample data · not live</span><span class="muted" id="pulseMeta"></span></div>
+  </div></section>
+
+  <section class="blk"><div class="wrap">
+    <div class="head"><div class="stack"><p class="eyebrow">Publications</p><h2>Read what FIC writes</h2><p class="lede">Four running publications and a flagship compendium, all from the club's existing archive.</p></div><a class="btn ghost" href="#publications">Open the full archive</a></div>
+    <div class="grid pubs" id="pubCards"></div>
+  </div></section>
+
+  <section class="blk"><div class="wrap">
+    <div class="head"><div class="stack"><p class="eyebrow">Featured challenge</p><h2>This week in the Arena</h2></div><a class="btn ghost" href="#arena">All games</a></div>
+    <div class="feature">
+      <div class="art"><canvas id="featCanvas" aria-hidden="true"></canvas></div>
+      <div class="txt">
+        <span class="chip gold" style="align-self:flex-start">Featured</span>
+        <h3 style="font-size:1.8rem">Portfolio Manager for a Minute</h3>
+        <p class="muted">Allocate a hypothetical ₹1,00,000 across equities, debt, gold, cash and global equity. A market scenario then hits your portfolio. See how risk, liquidity and diversification decide the result.</p>
+        <div class="meta"><span>Difficulty<b>Intermediate</b></span><span>Time<b>3 min</b></span><span>Points<b>Up to 100</b></span></div>
+        <div><a class="btn pri" href="#arena" data-open-game="portfolio">Start playing</a></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="blk"><div class="wrap">
+    <div class="daily">
+      <div class="stack">
+        <p class="eyebrow">Daily Finance Question</p>
+        <h2>One question a day</h2>
+        <p class="muted">Changes every day at midnight IST. Answer to earn 10 points. Points and streaks are saved in this browser only.</p>
+      </div>
+      <div class="card pad" id="dailyBox"></div>
+    </div>
+  </div></section>
+
+  <section class="blk"><div class="wrap">
+    <div class="head"><div class="stack"><p class="eyebrow">Events</p><h2>Upcoming and recent</h2></div><a class="btn ghost" href="#events">Events &amp; Speakers</a></div>
+    <div class="two">
+      <div class="stack"><h4>Upcoming</h4><div id="homeUpcoming"></div></div>
+      <div class="stack"><h4>Recent activity</h4><div class="ev-list" id="homeRecent"></div></div>
+    </div>
+  </div></section>
+
+  <section class="blk"><div class="wrap">
+    <div class="head"><div class="stack"><p class="eyebrow">FIC at a glance</p><h2>The club in numbers</h2></div></div>
+    <div class="grid glance" id="glance"></div>
+    <p class="small muted" style="margin-top:10px" id="glanceNote"></p>
+  </div></section>
+
+  <section class="community">
+    <div class="wrap">
+      <div class="stack">
+        <p class="eyebrow">Community</p>
+        <h2>Get the next issue in your inbox</h2>
+        <p class="lede">Arbitrage each month, Profit Formula and Corporate Chronicles each week, plus event announcements. Want to write instead? Pitch an article for Arbitrage.</p>
+        <div><a class="btn line-light" href="#contribute" data-goto="publications" data-anchor="contribute">Submit an article</a></div>
+      </div>
+      <form class="card pad stack" id="newsForm" novalidate>
+        <label class="f" for="nlName">Name<input id="nlName" type="text" autocomplete="name" required></label>
+        <label class="f" for="nlEmail">Email<input id="nlEmail" type="email" autocomplete="email" required><span class="err" id="nlEmailErr"></span></label>
+        <label class="check" for="nlConsent"><input id="nlConsent" type="checkbox"> <span>I agree to receive FIC emails and can unsubscribe at any time.</span></label>
+        <span class="err" id="nlConsentErr"></span>
+        <button class="btn pri" type="submit">Subscribe</button>
+        <p class="small muted" id="nlOut">Prototype form: entries are validated but not sent anywhere. On Wix this connects to a Wix Form or Wix Email Marketing list.</p>
+      </form>
+    </div>
+  </section>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<div class="view" data-view="about">
+  <div class="wrap"><p class="crumbs"><a href="#home">Home</a> / About FIC</p></div>
+  <section class="blk"><div class="wrap two">
+    <div class="stack" style="gap:16px">
+      <p class="eyebrow">About FIC</p>
+      <h1 style="font-size:clamp(2rem,4vw,3rem)">Risk it for the reward, with the analysis to back it.</h1>
+      <div class="ph contain emblem"><img data-img="logoBig" alt="Finance and Investment Club emblem"></div>
+      <p class="lede">The Finance and Investment Club (FIC) at IIM Rohtak is a student-led initiative that fosters a passion for finance and opens career pathways. It runs activities, workshops and competitions that connect academic theory with practical finance.</p>
+    </div>
+    <div class="stack" style="gap:18px">
+      <div class="ph about-photo"><img data-img="about" alt="Members of the Finance and Investment Club, IIM Rohtak"></div>
+      <div class="card pad stack"><p class="eyebrow">Mission</p><p>Build a deep understanding of financial concepts among IIM Rohtak students through interactive learning; grow readership of Arbitrage and the club's other publications; and run premier events such as the Finance Summit that connect students with finance professionals.</p></div>
+      <div class="card pad stack"><p class="eyebrow">How the club is organised</p><div class="row" id="verticals"></div><p class="small muted">Verticals as listed on the current About page.</p></div>
+    </div>
+  </div></section>
+  <section class="blk"><div class="wrap">
+    <div class="head"><div class="stack"><p class="eyebrow">What we do</p><h2>Four ways to get involved</h2></div></div>
+    <div class="grid game-grid">
+      <a class="card gcard" href="#publications" style="text-decoration:none"><h4>Read and write</h4><p>Arbitrage, Corporate Chronicles, Profit Formula, FinSage and the Finance Compendium.</p></a>
+      <a class="card gcard" href="#events" style="text-decoration:none"><h4>Compete</h4><p>FAOTY, Mint Your Money, Smart Beta, BID-2-WIN and the club's simulation games.</p></a>
+      <a class="card gcard" href="#events" style="text-decoration:none"><h4>Learn from practitioners</h4><p>Guest lectures, workshops and knowledge sessions with industry speakers and alumni.</p></a>
+      <a class="card gcard" href="#arena" style="text-decoration:none"><h4>Practise any time</h4><p>Quizzes, valuation labs and case simulations in the Finance Arena.</p></a>
+    </div>
+  </div></section>
+  <section class="blk"><div class="wrap">
+    <div class="head"><div class="stack"><p class="eyebrow">Associations</p><h2>Partners and associations</h2></div></div>
+    <div class="two" style="margin-bottom:18px"><div class="stack"><h3>Vision</h3><div class="ph contain about-photo"><img data-img="vision" alt="FIC vision board from the current website"></div></div><div class="stack"><h3>Our partnerships</h3><div class="ph contain about-photo"><img data-img="partners" alt="FIC partnerships graphic from the current website"></div></div></div>
+    <div class="empty">The current Associations page shows a single image with no text, so partner names cannot be read by search engines or screen readers. Partners named elsewhere on the site: CFA Institute (University Affiliation Program, per the 2018 lecture write-up), ICICI Direct (StockMIND), The WallStreet School (financial modelling workshop), RBI (guest speaker). Confirm current partnerships before publishing this list.</div>
+  </div></section>
+</div>
+
+<!-- ============ PUBLICATIONS ============ -->
+<div class="view" data-view="publications">
+  <div class="wrap"><p class="crumbs"><a href="#home">Home</a> / Publications</p></div>
+  <section class="blk"><div class="wrap">
+    <div class="head"><div class="stack"><p class="eyebrow">Publications</p><h1 style="font-size:clamp(2rem,4vw,3rem)">The FIC archive</h1><p class="lede">Every issue currently hosted on the club's publications site, in one searchable place. Each link opens the original PDF.</p></div></div>
+    <div class="grid pubs" id="pubCards2" style="margin-bottom:40px"></div>
+    <div class="filters">
+      <label class="f q" for="aq">Search<input id="aq" type="text" placeholder="e.g. Enron, IPO, inflation"></label>
+      <label class="f" for="apub">Publication<select id="apub"></select></label>
+      <label class="f" for="atopic">Topic<select id="atopic"></select></label>
+      <label class="f" for="ayear">Year<select id="ayear"></select></label>
+    </div>
+    <p class="count" id="acount"></p>
+    <div class="arch" id="arch"></div>
+  </div></section>
+  <section class="blk" id="contribute"><div class="wrap two">
+    <div class="stack" style="gap:14px">
+      <p class="eyebrow">Contribute</p>
+      <h2>Pitch an article</h2>
+      <p class="muted">Arbitrage invites articles from finance enthusiasts each month. Send a short pitch; the Editorial team reviews every submission before anything is published.</p>
+      <div class="note">The current site's "Wish to contribute" link points to the December 2025 call on Unstop. Replace it with this form or a live call for articles.</div>
+    </div>
+    <form class="card pad stack" id="pitchForm" novalidate>
+      <label class="f" for="pName">Your name<input id="pName" type="text" required></label>
+      <label class="f" for="pEmail">Email<input id="pEmail" type="email" required><span class="err" id="pEmailErr"></span></label>
+      <label class="f" for="pTitle">Working title<input id="pTitle" type="text" required></label>
+      <label class="f" for="pAbs">Summary (50–300 words)<textarea id="pAbs" rows="5" required></textarea><span class="err" id="pAbsErr"></span></label>
+      <span class="small muted" id="pWords">0 words</span>
+      <label class="check" for="pOrig"><input id="pOrig" type="checkbox"> <span>This is my original work and I agree to editorial review.</span></label>
+      <span class="err" id="pOrigErr"></span>
+      <button class="btn pri" type="submit">Send pitch</button>
+      <p class="small muted" id="pOut">Prototype form: validated but not sent. On Wix, connect to a Wix Form with a file upload field.</p>
+    </form>
+  </div></section>
+</div>
+
+<!-- ============ ARENA ============ -->
+<div class="view" data-view="arena">
+  <div class="wrap"><p class="crumbs"><a href="#home">Home</a> / Finance Arena</p></div>
+  <section class="blk" style="padding-top:28px"><div class="wrap">
+    <div class="head"><div class="stack"><p class="eyebrow">Finance Arena</p><h1 style="font-size:clamp(2rem,4vw,3rem)">Play the concepts</h1><p class="lede">Seven playable modules. No login needed. All scenarios are hypothetical or labelled historical, and nothing here is investment advice.</p></div></div>
+    <div class="pts" id="ptsBar"></div>
+    <div class="arena-nav" role="tablist" id="arenaTabs"></div>
+    <div id="arenaHome" class="panel on" data-panel="lobby"><div class="grid game-grid" id="gameCards"></div></div>
+    <div class="panel" data-panel="quiz"><div class="card game" id="quiz"></div></div>
+    <div class="panel" data-panel="portfolio"><div class="card game" id="portfolio"></div></div>
+    <div class="panel" data-panel="scam"><div class="card game" id="scam"></div></div>
+    <div class="panel" data-panel="valuation"><div class="card game" id="valuation"></div></div>
+    <div class="panel" data-panel="bullbear"><div class="card game" id="bullbear"></div></div>
+    <div class="panel" data-panel="crossword"><div class="card game" id="crossword"></div></div>
+    <div class="panel" data-panel="deal"><div class="card game" id="deal"></div></div>
+  </div></section>
+</div>
+
+<!-- ============ TOOLKIT ============ -->
+<div class="view" data-view="toolkit">
+  <div class="wrap"><p class="crumbs"><a href="#home">Home</a> / Finance Toolkit</p></div>
+  <section class="blk" style="padding-top:28px"><div class="wrap">
+    <div class="head"><div class="stack"><p class="eyebrow">Finance Toolkit</p><h1 style="font-size:clamp(2rem,4vw,3rem)">Ten calculators, formulas shown</h1><p class="lede">Every tool shows the formula it uses and what the result means. Outputs are estimates from your inputs, not guaranteed outcomes.</p></div></div>
+    <div class="tk"><div class="tk-list" role="tablist" id="tkList"></div><div class="card pad stack" style="gap:18px" id="tkBody"></div></div>
+  </div></section>
+</div>
+
+<!-- ============ EVENTS ============ -->
+<div class="view" data-view="events">
+  <div class="wrap"><p class="crumbs"><a href="#home">Home</a> / Events &amp; Speakers</p></div>
+  <section class="blk" style="padding-top:28px"><div class="wrap">
+    <div class="head"><div class="stack"><p class="eyebrow">Events &amp; Speakers</p><h1 style="font-size:clamp(2rem,4vw,3rem)">On campus with FIC</h1></div></div>
+    <h3 style="margin-bottom:12px">Upcoming</h3>
+    <div id="evUpcoming" style="margin-bottom:40px"></div>
+    <div class="head" style="margin-bottom:14px"><h3>Signature events and past sessions</h3>
+      <div class="row" id="evFilters" role="group" aria-label="Filter events"></div></div>
+    <div class="ev-list" id="evAll"></div>
+  </div></section>
+  <section class="blk"><div class="wrap">
+    <div class="head"><div class="stack"><p class="eyebrow">Speaker &amp; Alumni Corner</p><h2>Who has spoken at FIC</h2><p class="lede">Only speakers and details recorded on the current website. Add dates, photos and slides as the club verifies them.</p></div></div>
+    <div class="grid spk" id="speakers"></div>
+  </div></section>
+  <section class="blk"><div class="wrap">
+    <div class="head"><div class="stack"><p class="eyebrow">Gallery</p><h2>From FIC's events</h2><p class="lede">Photos from the club's current website. Tap a photo to enlarge it.</p></div></div>
+    <div class="gallery" id="gallery"></div>
+  </div></section>
+  <section class="blk"><div class="wrap two">
+    <div class="stack"><p class="eyebrow">Lessons from the Experts</p><h2>Takeaways worth keeping</h2><p class="muted">Paraphrased from the club's own session write-ups.</p></div>
+    <div class="stack" style="gap:18px" id="lessons"></div>
+  </div></section>
+</div>
+
+<!-- ============ TEAM ============ -->
+<div class="view" data-view="team">
+  <div class="wrap"><p class="crumbs"><a href="#home">Home</a> / Our Team</p></div>
+  <section class="blk" style="padding-top:28px"><div class="wrap">
+    <div class="head"><div class="stack"><p class="eyebrow">Our Team</p><h1 style="font-size:clamp(2rem,4vw,3rem)">The PGP16 team</h1><p class="lede">As listed on the current Our Team page. Photos stay on Wix and are swapped in from the CMS.</p></div></div>
+    <div class="grid people" id="people"></div>
+  </div></section>
+</div>
+
+<!-- ============ CONTACT ============ -->
+<div class="view" data-view="contact">
+  <div class="wrap"><p class="crumbs"><a href="#home">Home</a> / Contact</p></div>
+  <section class="blk" style="padding-top:28px"><div class="wrap two">
+    <div class="stack" style="gap:16px">
+      <p class="eyebrow">Contact</p>
+      <h1 style="font-size:clamp(2rem,4vw,3rem)">Talk to the club</h1>
+      <p class="muted">For partnerships, speaker sessions, sponsorships or publication queries.</p>
+      <div class="ph about-photo"><img data-img="findUs" alt="The FIC team at IIM Rohtak"></div>
+      <div class="card pad stack">
+        <div><span class="eyebrow">Email</span><p class="mono" style="font-size:1.05rem">fi@iimrohtak.ac.in <button class="iconbtn" type="button" data-copy="fi@iimrohtak.ac.in" style="height:28px;margin-left:6px">Copy</button></p></div>
+        <div><span class="eyebrow">Address</span><p>Finance and Investment Club, Indian Institute of Management Rohtak, Haryana</p></div>
+        <div><span class="eyebrow">Convenors</span><div id="contactPeople" class="small"></div></div>
+      </div>
+    </div>
+    <form class="card pad stack" id="contactForm" novalidate>
+      <label class="f" for="cName">Name<input id="cName" type="text" required></label>
+      <label class="f" for="cEmail">Email<input id="cEmail" type="email" required><span class="err" id="cEmailErr"></span></label>
+      <label class="f" for="cTopic">Topic<select id="cTopic"><option>Partnership or sponsorship</option><option>Speaker session</option><option>Publications</option><option>Other</option></select></label>
+      <label class="f" for="cMsg">Message<textarea id="cMsg" rows="5" required></textarea><span class="err" id="cMsgErr"></span></label>
+      <button class="btn pri" type="submit">Send message</button>
+      <p class="small muted" id="cOut">Prototype form: validated but not sent. On Wix, use a Wix Form that emails fi@iimrohtak.ac.in.</p>
+    </form>
+  </div></section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="stack">
+      <a class="brand" href="#home"><span class="mark" aria-hidden="true">Φ<img data-img="logo" alt=""></span><span><b>Finance &amp; Investment Club</b><span style="display:block">Indian Institute of Management Rohtak</span></span></a>
+      <p class="muted small">A student-led club of IIM Rohtak.</p>
+      <p class="mono small">fi@iimrohtak.ac.in</p>
+    </div>
+    <div><h4>Explore</h4><ul><li><a href="#about">About FIC</a></li><li><a href="#arena">Finance Arena</a></li><li><a href="#toolkit">Finance Toolkit</a></li><li><a href="#events">Events &amp; Speakers</a></li><li><a href="#team">Our Team</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div><h4>Publications</h4><ul id="footPubs"></ul></div>
+    <div><h4>Follow</h4><ul id="footSocial"></ul></div>
+    <div class="legal"><span>© 2026 Finance and Investment Club, IIM Rohtak</span><span>Games and calculators are educational and are not investment advice.</span></div>
+  </div>
+</footer>
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Photo"><button class="iconbtn" id="lbClose" type="button">Close</button><figure style="margin:0"><img id="lbImg" alt=""><p id="lbCap"></p></figure></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+/* ================= FIC CONTENT DATA =================
+   Everything below is taken from the current FIC Wix site (audited 15 Oct 2026).
+   On Wix, each array maps to a CMS collection (see implementation guide). */
+const U = id => "https://4e9b5704-dca3-47d6-b9da-852384f99c4c.filesusr.com/ugd/ba4451_" + id + ".pdf";
+
+const PUBS = {
+  arb:{name:"Arbitrage", cls:"cv-arb", cad:"Monthly magazine", desc:"Monthly magazine that invites articles from finance enthusiasts and compiles the best into one issue.", tags:["Student articles","Markets","Monthly"], page:"https://ficiimr.wixsite.com/publications/blog-1"},
+  cc:{name:"Corporate Chronicles", cls:"cv-cc", cad:"Weekly · Scandal Sheet", desc:"Weekly digest that dissects a corporate fraud or financial crisis: how it unfolded and the finance that made it possible.", tags:["Fraud","Governance","History"], page:"https://ficiimr.wixsite.com/publications/copy-of-profit-formula"},
+  pf:{name:"Profit Formula", cls:"cv-pf", cad:"Weekly market update", desc:"Weekly market update magazine covering the week's biggest moves in Indian and global finance.", tags:["Markets","Policy","Weekly"], page:"https://ficiimr.wixsite.com/publications/newsletter"},
+  fc:{name:"Finance Compendium", cls:"cv-fc", cad:"Flagship · 2025–26", desc:"The club's flagship knowledge resource for the year: trends, investment strategy and market analysis.", tags:["Flagship","Reference","Annual"], page:"https://drive.google.com/file/d/1522aPVG-D6khkpA5iJolo5oYxEwOd6mq/view?usp=sharing"},
+  fs:{name:"FinSage", cls:"cv-fs", cad:"Beginner series", desc:"A four-part beginner series on the income statement, balance sheet, cash flow statement and accounting ratios.", tags:["Beginner","Accounting"], page:"https://ficiimr.wixsite.com/publications/equity-reports"}
+};
+
+/* archive: [pub, title, year or null, month index or null, topics[], url] */
+const ARCHIVE = [
+  ["fc","Finance Compendium 2025–26",2026,null,["Reference"],"https://drive.google.com/file/d/1522aPVG-D6khkpA5iJolo5oYxEwOd6mq/view?usp=sharing"],
+  ["arb","Arbitrage · February 2026",2026,2,["Student articles"],U("70a8ba9425114831b79538223057819a")],
+  ["arb","Arbitrage · January 2026",2026,1,["Student articles"],U("71ab6c252ad54e149effe6cb732c9efd")],
+  ["arb","Arbitrage · December 2025",2025,12,["Student articles"],U("24e790e8f1074490a591de4a37ff25b8")],
+  ["arb","Arbitrage · November 2025",2025,11,["Student articles"],U("57508304fb5a4ec98893047abe6f1ae7")],
+  ["arb","Arbitrage · October 2025",2025,10,["Student articles"],U("7be60d8b7f624fc9a5f37782d310de8e")],
+  ["arb","Arbitrage · September 2025",2025,9,["Student articles"],U("7b83c1e44f7a451ca28e5340a8a279ba")],
+  ["arb","Arbitrage · January 2025",2025,1,["Student articles"],U("2763057280e54c3f9a800119a7bab511")],
+  ["arb","Arbitrage · December 2024",2024,12,["Student articles"],U("a73140bb24874a2bbace15ee62f4df68")],
+  ["arb","Arbitrage · July 2024",2024,7,["Student articles"],U("7ce41730c3134a5881a4a8c4272a4bca")],
+  ["pf","India's Labour Code Revolution",null,null,["Policy"],U("ec3fe3a4a11b4be0a71c9ef74b2679f7")],
+  ["pf","The Delhi Blast",null,null,["Markets"],U("597543c7fc5d4ec598efc5c503914b08")],
+  ["pf","U.S. and China Strike One-Year Trade Truce",null,null,["Trade","Global macro"],U("1b522c7cab194a6b88e8da3d76ec11a3")],
+  ["pf","The New Gold Standard",null,null,["Commodities"],U("445be9ae06144a159c112df53c1b9cd9")],
+  ["pf","India's Push for FDI and FII Reforms",null,null,["Policy","Capital markets"],U("2b7e75d8952f4770ae26b63353681377")],
+  ["pf","The Current IPO Culture in India",null,null,["Capital markets"],U("c11ab6cd8cd64dec88e655ef1d915235")],
+  ["pf","Inflation Collapse Boosts RBI Flexibility",null,null,["Monetary policy"],U("305bd459f5704d7eb3512c07ba620c7e")],
+  ["pf","The 100% Tariff Shock",null,null,["Trade"],U("3349bda949e344378cc2a3bc09231167")],
+  ["pf","India's Russian Oil Retreat",null,null,["Commodities","Trade"],U("8792222a088e4f03bdb80c57e2a3902f")],
+  ["pf","Banks on the Move",null,null,["Banking"],U("82de7f3692854a849592a38a557bad74")],
+  ["pf","Japan's Moment of Change",null,null,["Global macro"],U("460bac01290b46249103a1cd72562bdc")],
+  ["pf","Rally of Bitcoin, Ethereum and Solana",null,null,["Crypto"],U("8eed6c73de8442b0b02e3a989ef4bf85")],
+  ["cc","Hegestratos Fraud",null,null,["Fraud"],U("9e16cd47d6534e2cb316c21e57ae1b83")],
+  ["cc","South Sea Bubble",null,null,["Bubbles & crises"],U("e26eab4849d542eb8e23824400106edd")],
+  ["cc","Charles Ponzi Scheme",null,null,["Fraud"],U("9a5b95210f714d3fa4a817007bfa8d19")],
+  ["cc","Barings Bank Collapse",null,null,["Banking","Risk management"],U("d549bdd48c9d435ebf233a06d40381cc")],
+  ["cc","Long-Term Capital Management Collapse",null,null,["Bubbles & crises","Risk management"],U("a2da0b39033a45b483b3f41849b59e7e")],
+  ["cc","Parmalat Scandal",null,null,["Fraud","Accounting"],U("6cbbe86d663e44d6a61d5a8e305e315c")],
+  ["cc","Tulip Mania",null,null,["Bubbles & crises"],U("aee3792b741749edbf4876532bf76948")],
+  ["cc","Poyais Fraud",null,null,["Fraud"],U("37a7f0d087da487dab4f72ee0fa14990")],
+  ["cc","McKesson & Robbins Fraud",null,null,["Fraud","Accounting"],U("fb4cb886ffe041bc8c000635725b6d05")],
+  ["cc","Asian Financial Crisis",null,null,["Bubbles & crises","Global macro"],U("203f50fd0e7b4f998104676b1cc6c4a0")],
+  ["cc","Enron Scandal",null,null,["Fraud","Accounting"],U("0eab1d8d6043427a8001fc42052478ed")],
+  ["cc","Mutual Fund Market Timing Scandal",null,null,["Fraud","Capital markets"],U("43d551bb02de404aaf69b746f543b5f7")],
+  ["cc","Mississippi Bubble",null,null,["Bubbles & crises"],U("d78da39e21c74ff7b069f8e525bc5663")],
+  ["cc","Railway Mania Accounting Fraud",null,null,["Fraud","Accounting"],U("a6b0c7b543244ae5a8c0a7fc446fa73f")],
+  ["cc","Savings and Loan Crisis",null,null,["Banking","Bubbles & crises"],U("7c9f97515c364613a1bcc52b0075a380")],
+  ["cc","Waste Management Accounting Fraud",null,null,["Fraud","Accounting"],U("5caa6ab35d0c4abf8e0bbb9b5c94980f")],
+  ["cc","WorldCom Fraud",null,null,["Fraud","Accounting"],U("0a5ea50fad6446948564d430afe987e3")],
+  ["cc","Refco Fraud",null,null,["Fraud"],U("b4a2a0d41f414e19a293689f2e24c3af")],
+  ["fs","FinSage · Profit and Loss (Income Statement)",null,null,["Accounting"],U("4a595390479f476daacc2268857d66dc")],
+  ["fs","FinSage · Balance Sheet",null,null,["Accounting"],U("90c0cd015f484208b38222722f7c6599")],
+  ["fs","FinSage · Cash Flow Statement",null,null,["Accounting"],U("e194ce3e327347b2b0779e9453d1f624")],
+  ["fs","FinSage · Accounting Ratios",null,null,["Accounting"],U("410260bd22064c9fa6324653ca42a6d2")]
+];
+
+/* Finance Pulse: SAMPLE values only, for layout. Never shown as live. */
+const PULSE = {
+  status:"sample", asOf:"Illustrative values for layout only — not market data",
+  source:"Replace with a licensed delayed feed or a weekly manual update (see guide)",
+  rows:[["Nifty 50","25,000.00",0.42],["Sensex","82,000.00",0.38],["Nifty Bank","56,000.00",-0.21],["S&P 500","6,500.00",0.15],["USD/INR","88.00",-0.05],["Gold (₹/10g)","1,20,000",0.62],["Brent ($/bbl)","65.00",-1.10],["India 10Y (%)","6.50",0.02]]
+};
+
+const GLANCE = [ /* counted from the live site archive on 15 Oct 2026; edit as records change */
+  [9,"Arbitrage editions online"],[18,"Corporate Chronicles Scandal Sheets"],[12,"Profit Formula issues online"],[4,"FinSage beginner editions"],[3,"FAOTY editions"],[5,"Club verticals"]
+];
+const VERTICALS = ["Editorial","External Affairs","Knowledge","Public Relations","Special Projects"];
+
+const UPCOMING = []; /* no dated upcoming events are published on the current site */
+
+/* events: type, title, when, people, desc, source */
+const EVENTS = [
+  {type:"Session",title:"Knowledge Session by Prof. Aswath Damodaran",when:"Recent",desc:"Featured as the lead item under Recent Activities on the current homepage. Add date, topic and photos from club records."},
+  {type:"Competition",title:"Financial Analyst of the Year (FAOTY)",when:"Annual · 3rd edition",desc:"The club's flagship analyst competition, now in its third edition, with a recap gallery from FAOTY 2.0."},
+  {type:"Competition",title:"Mint Your Money",when:"Signature event",desc:"Real-life investment simulation game."},
+  {type:"Session",title:"Anybody Can Finance",when:"Signature series",desc:"Foundation sessions so that no one is left behind, whatever their background."},
+  {type:"Session",title:"Newshour",when:"Recurring",desc:"Student-led sessions on the week's hot topics. Past editions include a sector-by-sector Union Budget FY 2018-19 analysis (29 Mar 2018)."},
+  {type:"Competition",title:"Smart Beta",when:"Date to be announced",desc:"Test your mastery of finance."},
+  {type:"Competition",title:"FIN-O-MENA",when:"Date to be announced",desc:"Economic policy simulation game."},
+  {type:"Competition",title:"Bieten Krieg",when:"Date to be announced",desc:"Auction game."},
+  {type:"Competition",title:"BID-2-WIN",when:"Date to be announced",desc:"Stock prediction competition."},
+  {type:"Initiative",title:"Vision Fund",when:"Coming soon",desc:"Listed as coming soon on the current homepage."},
+  {type:"Lecture",title:"Credit Risk in Indian Banking",when:"Archive",people:"Mr. Venkat Bhargav, Manager, RBI",desc:"Lecture and case discussion on credit risk in the Indian banking system."},
+  {type:"Workshop",title:"ICICI Direct StockMIND",when:"Archive",people:"Ms. Malini Prasad, ICICI Direct",desc:"Seminar on stock trading and an introduction to the ICICI Direct StockMIND competition."},
+  {type:"Lecture",title:"Importance of the CFA Programme",when:"9 Mar 2018",people:"Mr. Vidhu Shekhar, CFA, Country Head, India",desc:"Why the CFA Programme pairs knowledge with ethics, and what finance contributes to society."},
+  {type:"Workshop",title:"Workshop on Investment Ethics",when:"13 Mar 2018",people:"Ms. Sonia Gandhi",desc:"Case-based workshop on recognising and acting on ethical issues before they become problems."},
+  {type:"Workshop",title:"Financial Modelling Workshop",when:"Archive",people:"Mr. Suresh Varma, IIM Rohtak alumnus, with The WallStreet School",desc:"From a fruit vendor's business to a 25-year wind power project model."},
+  {type:"Session",title:"CFA Knowledge Sessions (peer-led)",when:"2017–18",desc:"Student-led sessions on Cost of Capital and on Business Cycles and Monetary Policy."}
+];
+
+const SPEAKERS = [
+  {name:"Prof. Aswath Damodaran",role:"Professor of Finance, NYU Stern",session:"Knowledge Session",note:"Listed under Recent Activities on the homepage."},
+  {name:"Mr. Venkat Bhargav",role:"Manager, Reserve Bank of India",session:"Credit Risk in Indian Banking",note:"Lecture with case discussion."},
+  {name:"Mr. Vidhu Shekhar, CFA",role:"Country Head, India (as listed)",session:"Importance of the CFA Programme · 9 Mar 2018",note:"The write-up records IIM Rohtak as the 4th IIM in the CFA Institute University Affiliation Program."},
+  {name:"Ms. Malini Prasad",role:"ICICI Direct",session:"ICICI Direct StockMIND",note:"Seminar on stock trading."},
+  {name:"Ms. Sonia Gandhi",role:"Workshop facilitator",session:"Investment Ethics · 13 Mar 2018",note:"Case-based ethics workshop."},
+  {name:"Mr. Suresh Varma",role:"IIM Rohtak alumnus",session:"Financial Modelling Workshop",note:"Conducted with The WallStreet School."}
+];
+
+const LESSONS = [
+  {who:"Vidhu Shekhar, CFA",what:"Knowledge and ethics have to move together, like the two wheels of one cart. Treat finance as a service to society, through fundraising and capital restructuring, rather than only a way to earn."},
+  {who:"Investment Ethics workshop",what:"Ethical dilemmas are a normal, predictable part of most jobs. Noticing your own thoughts and behaviour early is what lets you act before an issue becomes a problem."},
+  {who:"Suresh Varma, Financial Modelling Workshop",what:"Learn modelling by starting small. The session began with a fruit vendor's business and built up to the financial statements of a 25-year wind power project."}
+];
+
+const TEAM = [
+  ["Ishit Gadia","Convenor","https://www.linkedin.com/in/ishitgadia/"],
+  ["Arpit Garg","Co-Convenor","https://www.linkedin.com/in/arpit-garg-897705265/"],
+  ["Aditya Batra","Events Head","https://www.linkedin.com/in/aditya-avi/"],
+  ["Akshay Nair","Events Head","https://www.linkedin.com/in/akshay-nair-29aab1257/"],
+  ["Riddhi Mittal","Editorial Head","https://www.linkedin.com/in/riddhi-mittal-41858523b/"],
+  ["Heet Sarvaiya","External Relations Head","https://www.linkedin.com/in/heet-sarvaiya-737066257/"],
+  ["Hiya Singhvi","External Relations Head","https://www.linkedin.com/in/hiya-singhvi-724184262/"],
+  ["Pallavi Warhatkar","Public Relations Head","https://www.linkedin.com/in/pallavi-warhatkar/"]
+];
+const CONTACTS = [["Ishit Gadia","+91 95161 21219"],["Arpit Garg","+91 91324 00324"],["Riddhi Mittal","+91 88262 19901"]];
+const SOCIAL = [
+  ["LinkedIn","https://www.linkedin.com/company/fi-club-iim-rohtak/"],["Instagram","https://www.instagram.com/fic_iimr/"],["Facebook","https://www.facebook.com/FIclub.IIMRohtak/"],["YouTube","https://www.youtube.com/channel/UCnMaIN9qEqpVkMiK8y6swIA"],["Issuu","https://issuu.com/financeclubiimrohtak"],["Quora","https://www.quora.com/profile/FI-Club-IIM-Rohtak"]
+];
+
+/* ================= QUIZ BANK =================
+   To add questions: append objects here (or add rows to the Wix CMS "QuizQuestions" collection).
+   a = index of the correct option. d = Easy | Medium | Hard. */
+const QUIZ = [
+  {c:"Financial Statement Analysis",d:"Easy",q:"Which ratio best measures a company's ability to meet its short-term obligations?",o:["Current ratio","Debt-to-equity ratio","Return on equity","Asset turnover"],a:0,e:"Current ratio = current assets ÷ current liabilities. Above 1 means short-term assets cover short-term obligations."},
+  {c:"Financial Statement Analysis",d:"Medium",q:"Revenue grows 20%, receivables grow 60% and operating cash flow falls. What is the main concern?",o:["Aggressive or fictitious revenue recognition","Over-conservative accounting","An inventory write-down","Too little leverage"],a:0,e:"When receivables outgrow sales and cash does not follow profit, the reported revenue may not be turning into cash. It is a classic earnings-quality warning sign."},
+  {c:"Financial Statement Analysis",d:"Medium",q:"In the DuPont identity, ROE = Net margin × Asset turnover × ?",o:["Equity multiplier","Interest coverage","Current ratio","Payout ratio"],a:0,e:"Equity multiplier = total assets ÷ equity. It captures how much leverage lifts ROE."},
+  {c:"Financial Statement Analysis",d:"Hard",q:"A firm's interest coverage falls from 6× to 1.4×. What does that most directly signal?",o:["Operating profit barely covers interest, raising default risk","The firm has become more liquid","Equity holders will receive higher dividends","Asset turnover has improved"],a:0,e:"Interest coverage = EBIT ÷ interest expense. At 1.4×, a small fall in EBIT would leave interest uncovered, so lenders see much higher credit risk."},
+  {c:"Valuation & DCF",d:"Easy",q:"Free cash flow to the firm (FCFF) is discounted at which rate?",o:["WACC","Cost of equity","Risk-free rate","Pre-tax cost of debt"],a:0,e:"FCFF belongs to all capital providers, so it is discounted at the weighted average cost of capital. FCFE is discounted at the cost of equity."},
+  {c:"Valuation & DCF",d:"Medium",q:"The Gordon growth terminal value formula only works when…",o:["The discount rate is greater than the growth rate","Growth is above GDP growth","Cash flows are negative","The firm has no debt"],a:0,e:"TV = FCF × (1 + g) ÷ (r − g). If g ≥ r the denominator is zero or negative and the value is meaningless."},
+  {c:"Valuation & DCF",d:"Medium",q:"How do you move from enterprise value to equity value?",o:["Subtract debt and add cash","Add debt and subtract cash","Multiply by the P/E ratio","Subtract minority interest only"],a:0,e:"Equity value = EV − debt + cash (that is, EV − net debt), with further adjustments such as minority interest and preference capital where relevant."},
+  {c:"Valuation & DCF",d:"Hard",q:"Next year's FCFF is ₹100 cr, WACC is 10% and growth is 4% forever. What is the firm worth today?",o:["₹1,666.7 cr","₹1,000 cr","₹2,500 cr","₹1,733.3 cr"],a:0,e:"Value = 100 ÷ (0.10 − 0.04) = ₹1,666.7 cr. The ₹100 cr is already next year's cash flow, so you do not multiply by (1 + g) again."},
+  {c:"Investment Banking",d:"Easy",q:"What does an underwriter do in an IPO?",o:["Prices, buys or guarantees, and distributes the issue","Audits the company's accounts","Regulates the stock exchange","Holds investors' shares in custody"],a:0,e:"Underwriters (book-running lead managers in India) help price the issue, take on placement risk and sell shares to investors."},
+  {c:"Investment Banking",d:"Medium",q:"An acquisition is called accretive when…",o:["Pro forma EPS is higher than the acquirer's standalone EPS","The target's revenue is larger than the acquirer's","The deal is paid in cash","The share price rises on announcement"],a:0,e:"Accretion and dilution compare combined EPS after the deal with the acquirer's EPS without it."},
+  {c:"Investment Banking",d:"Medium",q:"What is a fairness opinion?",o:["An adviser's view on whether a deal price is fair to shareholders, financially","A regulator's approval of a merger","A legal opinion on antitrust risk","An auditor's opinion on the target's accounts"],a:0,e:"Boards obtain fairness opinions from financial advisers to support their decision on the price."},
+  {c:"Investment Banking",d:"Hard",q:"In an all-stock deal with no synergies, the deal is EPS-accretive when…",o:["The acquirer's P/E is higher than the P/E paid for the target","The acquirer's P/E is lower than the P/E paid for the target","Both P/Es are equal","The target has more debt"],a:0,e:"A high-P/E acquirer issues relatively few shares for each rupee of target earnings, so combined EPS rises."},
+  {c:"Corporate Finance",d:"Easy",q:"Under the NPV rule, a project should be accepted when…",o:["NPV is greater than zero","IRR is below the cost of capital","Payback is longer than 5 years","Accounting profit is positive"],a:0,e:"A positive NPV means the project earns more than the required return and adds value."},
+  {c:"Corporate Finance",d:"Medium",q:"Modigliani–Miller (no taxes, perfect markets) says firm value is…",o:["Independent of capital structure","Maximised at 100% debt","Maximised at 0% debt","Determined by the dividend policy"],a:0,e:"Without taxes, bankruptcy costs or information asymmetry, how a firm is financed does not change the value of its cash flows."},
+  {c:"Corporate Finance",d:"Medium",q:"The annual interest tax shield equals…",o:["Interest expense × tax rate","Debt × cost of equity","EBIT × tax rate","Dividends × tax rate"],a:0,e:"Interest is tax-deductible, so each rupee of interest saves tax at the marginal tax rate."},
+  {c:"Corporate Finance",d:"Hard",q:"When can a project have more than one IRR?",o:["When its cash flows change sign more than once","When it is very large","When WACC is above 15%","When it is financed by equity"],a:0,e:"Non-conventional cash flows (for example −, +, −) can give several discount rates where NPV = 0. Use NPV instead."},
+  {c:"Banking & Credit Risk",d:"Easy",q:"Under RBI norms, a term loan generally becomes a non-performing asset when interest or principal is overdue for more than…",o:["90 days","30 days","180 days","365 days"],a:0,e:"The 90-day overdue norm is the standard NPA classification trigger for term loans in India."},
+  {c:"Banking & Credit Risk",d:"Medium",q:"Expected credit loss is commonly estimated as…",o:["PD × LGD × EAD","PD + LGD + EAD","Loan amount × interest rate","Collateral − loan amount"],a:0,e:"Probability of default × loss given default × exposure at default."},
+  {c:"Banking & Credit Risk",d:"Medium",q:"Where does a bank keep its Cash Reserve Ratio (CRR)?",o:["As cash balances with the RBI","In government securities it holds","As gold in its vaults","With other commercial banks"],a:0,e:"CRR is held with the RBI as cash. SLR is a separate requirement met with liquid assets such as government securities."},
+  {c:"Banking & Credit Risk",d:"Hard",q:"Basel III's Liquidity Coverage Ratio requires banks to hold high-quality liquid assets at least equal to…",o:["Net cash outflows over a 30-day stress period","Total deposits","One year of interest expense","Risk-weighted assets × 8%"],a:0,e:"LCR = HQLA ÷ total net cash outflows over 30 days ≥ 100%. It tests survival through a short, severe stress."},
+  {c:"Markets & Derivatives",d:"Easy",q:"A stock with a beta of 1.3 tends to…",o:["Move about 1.3× as much as the market","Return 1.3% a month","Be 30% less risky than the market","Move opposite to the market"],a:0,e:"Beta measures sensitivity to market moves. 1.3 means roughly 13% if the market moves 10%, in either direction."},
+  {c:"Markets & Derivatives",d:"Medium",q:"Buying a put option gives you…",o:["The right to sell at the strike price","The obligation to sell at the strike price","The right to buy at the strike price","The obligation to buy at the strike price"],a:0,e:"Put buyers hold a right, not an obligation. The put writer has the obligation to buy if the option is exercised."},
+  {c:"Markets & Derivatives",d:"Medium",q:"For European options on a non-dividend stock, put–call parity states…",o:["C − P = S − PV(K)","C + P = S + K","C − P = K − S","C = P × S ÷ K"],a:0,e:"A call minus a put with the same strike and expiry replicates a forward: the stock minus the present value of the strike."},
+  {c:"Markets & Derivatives",d:"Hard",q:"A long straddle (buy a call and a put at the same strike) profits most when…",o:["The underlying moves sharply in either direction","The underlying stays flat","Volatility falls","Interest rates rise slightly"],a:0,e:"You pay two premiums and gain from big moves either way. A flat market and falling implied volatility hurt the position."},
+  {c:"Accounting Fundamentals",d:"Easy",q:"Which equation always holds on a balance sheet?",o:["Assets = Liabilities + Equity","Assets = Revenue − Expenses","Equity = Assets + Liabilities","Liabilities = Assets + Equity"],a:0,e:"Every transaction keeps both sides in balance, which is the basis of double-entry bookkeeping."},
+  {c:"Accounting Fundamentals",d:"Medium",q:"Under the indirect method, depreciation in the cash flow statement is…",o:["Added back to net income","Subtracted from net income","Shown under financing activities","Ignored"],a:0,e:"Depreciation reduces profit but uses no cash, so it is added back when reconciling net income to operating cash flow."},
+  {c:"Accounting Fundamentals",d:"Medium",q:"Rent paid in advance for next year is recorded as…",o:["A current asset (prepaid expense)","A current liability","An expense this year","Revenue"],a:0,e:"The benefit has not been used yet, so it sits as an asset and is expensed as the months pass."},
+  {c:"Accounting Fundamentals",d:"Hard",q:"Wrongly capitalising an operating expense in the current year will…",o:["Overstate current profit and assets","Understate current profit","Reduce total assets","Have no effect on profit"],a:0,e:"The cost moves from the income statement to the balance sheet, so profit and assets are both inflated, and operating cash flow looks better too."},
+  {c:"Fraud & Ethics",d:"Easy",q:"In a Ponzi scheme, 'returns' to earlier investors are paid from…",o:["New investors' money","Genuine trading profits","Government subsidies","Bank loans to the scheme"],a:0,e:"No real return exists; the scheme needs fresh money to keep paying, and collapses when inflows slow."},
+  {c:"Fraud & Ethics",d:"Medium",q:"The three parts of Cressey's fraud triangle are…",o:["Pressure, opportunity, rationalisation","Greed, fear, hope","Motive, means, evidence","Risk, return, liquidity"],a:0,e:"Controls work mainly by removing opportunity; culture and incentives address pressure and rationalisation."},
+  {c:"Fraud & Ethics",d:"Medium",q:"Auditors confirming bank balances directly with the bank mainly protects against…",o:["Fictitious cash on the balance sheet","Currency translation errors","Tax underpayment","Inventory obsolescence"],a:0,e:"Independent confirmation stops management from showing forged statements or deposit receipts as evidence of cash."},
+  {c:"Fraud & Ethics",d:"Hard",q:"The WorldCom fraud principally involved…",o:["Recording line costs (operating expenses) as capital expenditure","Selling fake insurance policies","Hiding losses in off-balance-sheet SPVs only","Rogue derivatives trading by one trader"],a:0,e:"Billions in line costs were capitalised, which inflated profit and assets. Read the Corporate Chronicles WorldCom issue for the full Scandal Sheet."}
+];
+
+/* ================= ORIGINAL SITE IMAGES =================
+   Loaded straight from the club's existing Wix media library (static.wixstatic.com), unchanged.
+   If an image fails to load, the page falls back to a drawn cover or initials. */
+const W = (id, w, h, name = "img.jpg", crop = "") => `https://static.wixstatic.com/media/${id}/v1/${crop}fill/w_${w},h_${h},al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/${name}`;
+const IMG = {
+  logo: W("ba4451_dd199f032baf42cfb18d0980ac1a9a2f~mv2.png", 96, 96, "fic-logo.png"),
+  logoBig: W("ba4451_52a19ba3eaf4430d9d083e5e745cbb3f~mv2.png", 332, 297, "fic-emblem.png"),
+  club: W("ba4451_1cdd80356c4e4dac806eb0416c084a97~mv2.jpg", 960, 640, "fic-club.jpg"),
+  about: W("ba4451_9371fe9a16494bc886f63345ef7f5624~mv2.jpg", 1101, 647, "fic-about.jpg"),
+  damodaran: W("ba4451_4c7258fc8f6e496d86ae3da68e107806~mv2.jpg", 900, 519, "damodaran-session.jpg", "crop/x_0,y_540,w_6000,h_3460/"),
+  findUs: W("ba4451_0013a2b1d5ae4d56ac2d5cdebb869662~mv2.jpg", 974, 540, "fic-team-2025.jpg"),
+  vision: W("ba4451_40e82bc0e33a4d24af8a5df1b2bc7d89~mv2.png", 980, 689, "fic-vision.png", "crop/x_0,y_194,w_2000,h_1404/"),
+  partners: W("ba4451_92aa90b5c37d43f6bd05a0bca6601d49~mv2.jpg", 876, 513, "partnerships.jpg", "crop/x_0,y_18,w_1751,h_1024/"),
+  eventsHero: W("ba4451_14398219bded4cae82448cdc19de3051~mv2.jpg", 842, 602, "events.jpg"),
+  eventsNov25: W("ba4451_bcbc8331eef84d6a986513d8f5ef81bb~mv2.jpg", 982, 472, "event-nov-2025.jpg"),
+  lecturesDec24: W("ba4451_a8e1fa4cefb8435c8e5c0c816c802308~mv2.jpg", 820, 820, "lecture-dec-2024.jpg"),
+  lecture2: W("ba4451_90e7fdd8da184850a9ea6ade8921010a~mv2.jpg", 960, 636, "lecture.jpg"),
+  /* publication covers, exactly as on the current homepage "Our Publications" section */
+  covFc: W("ba4451_2ceb299068b34c7abbab5648d97ed098~mv2.png", 380, 494, "compendium.png", "crop/x_0,y_29,w_531,h_690/"),
+  covArb: W("ba4451_f61bd49ef541459baff16149bb52690d~mv2.png", 380, 493, "arbitrage.png", "crop/x_0,y_0,w_488,h_633/"),
+  covCc: W("ba4451_f8b72b569c0e4080a52adeacbac76e63~mv2.png", 380, 494, "corporate-chronicles.png", "crop/x_0,y_3,w_520,h_675/"),
+  covPf: W("ba4451_472cddb8f58749b2b8bf2e1823fb575a~mv2.png", 380, 494, "profit-formula.png", "crop/x_0,y_57,w_518,h_674/"),
+  covFcBig: W("ba4451_d6c753283640439fa066a9a12494b2fa~mv2.png", 424, 512, "compendium-cover.png", "crop/x_0,y_290,w_1414,h_1710/"),
+  thArb: W("ba4451_c75fc00cd6f84a5fa362eb96f615ec77~mv2.png", 160, 160, "arbitrage-thumb.png", "crop/x_48,y_0,w_556,h_556/"),
+  thPf: W("ba4451_32c06794069c447cb6c3429e34800cbd~mv2.png", 160, 160, "pf-thumb.png", "crop/x_5,y_0,w_612,h_612/"),
+  thCc: W("ba4451_a208cf32ad05455e89ae23003bfe4575~mv2.png", 160, 160, "cc-thumb.png", "crop/x_0,y_16,w_732,h_732/"),
+  fsBs: W("ba4451_aa332185bf684012a835fdc8b9bb515d~mv2.png", 275, 360, "finsage-bs.png", "crop/x_0,y_38,w_496,h_650/"),
+  fsCf: W("ba4451_e4301eb82cd243d9a686823152ffb83b~mv2.png", 275, 360, "finsage-cf.png", "crop/x_0,y_42,w_498,h_651/"),
+  fsPl: W("ba4451_640a1bb6f5a84e998f579f23eaabecd7~mv2.png", 275, 360, "finsage-pl.png", "crop/x_0,y_31,w_497,h_651/"),
+  fsRatio: W("ba4451_f85eda50e42f4cd18c24503cbd14f47f~mv2.png", 275, 360, "finsage-ratios.png", "crop/x_0,y_40,w_497,h_651/"),
+  /* event images */
+  mint: W("94db2f_5ee6a2e1db494cd088b0d0c611066932~mv2.jpg", 640, 460, "mint-your-money.jpg"),
+  anybody: W("94db2f_745b1a93c3624818acda0f97e9ddb0a5~mv2.jpg", 640, 480, "anybody-can-finance.jpg"),
+  newshour: W("94db2f_41769fbf9338401bb1e350c4ae7eac7c~mv2.jpg", 640, 480, "newshour.jpg"),
+  credit: W("ba4451_e6b3474646c8445a94841c1916b1d832~mv2_d_5184_3456_s_4_2.jpg", 640, 427, "credit-risk.jpg"),
+  icici: W("ba4451_bfcd92119dcc49e1a6d4423dcab44c4a~mv2.jpg", 640, 360, "icici-stockmind.jpg"),
+  visionFund: W("94db2f_3e667c5fb6c1495e93c2543f796140bd~mv2.png", 640, 455, "vision-fund.png"),
+  faoty: W("ba4451_2a56a68c320b48b3afaa111ae800999e~mv2.png", 383, 560, "faoty.png"),
+  faoty1: W("ba4451_ff4003ec936d49798ac0d85cba733af4~mv2.png", 354, 472, "faoty2-1.png"),
+  faoty2: W("ba4451_4cb00e740e394d89aad66f557a19f58e~mv2.png", 354, 472, "faoty2-2.png"),
+  faoty3: W("ba4451_72614be7232e494e98e978fc7f6e0747~mv2.png", 354, 472, "faoty2-3.png"),
+  faoty4: W("ba4451_8777b05d06924ea8a60b2c37cb3c1438~mv2.png", 354, 472, "faoty2-4.png"),
+  budget: W("ba4451_d0e037e7fe5f4b7e8654d11136711b3e~mv2.jpg", 660, 454, "newshour-budget.jpg"),
+  cfaSession: W("ba4451_74025a6317064b358d8c07cd084710aa~mv2.jpg", 660, 454, "cfa-session.jpg")
+};
+Object.assign(PUBS.arb, {cover:IMG.covArb, thumb:IMG.thArb});
+Object.assign(PUBS.cc, {cover:IMG.covCc, thumb:IMG.thCc});
+Object.assign(PUBS.pf, {cover:IMG.covPf, thumb:IMG.thPf});
+Object.assign(PUBS.fc, {cover:IMG.covFc, thumb:IMG.covFcBig});
+Object.assign(PUBS.fs, {cover:IMG.fsPl, thumb:IMG.fsPl});
+const FS_THUMB = {"FinSage · Balance Sheet":IMG.fsBs, "FinSage · Cash Flow Statement":IMG.fsCf, "FinSage · Profit and Loss (Income Statement)":IMG.fsPl, "FinSage · Accounting Ratios":IMG.fsRatio};
+const EV_IMG = {"Knowledge Session by Prof. Aswath Damodaran":IMG.damodaran, "Financial Analyst of the Year (FAOTY)":IMG.faoty, "Mint Your Money":IMG.mint, "Anybody Can Finance":IMG.anybody, "Newshour":IMG.newshour, "Vision Fund":IMG.visionFund, "Credit Risk in Indian Banking":IMG.credit, "ICICI Direct StockMIND":IMG.icici, "CFA Knowledge Sessions (peer-led)":IMG.cfaSession};
+EVENTS.forEach(e => { if (EV_IMG[e.title]) e.img = EV_IMG[e.title]; });
+const TEAM_PHOTOS = [
+  "https://static.wixstatic.com/media/ba4451_ec91fa1cb5674b808c831350fc007e90~mv2.jpg/v1/crop/x_506,y_1530,w_2387,h_2351/fill/w_240,h_236,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IshitGadia.jpg",
+  "https://static.wixstatic.com/media/ba4451_727ebb15e7534c188650a6714789c7ea~mv2.jpg/v1/crop/x_0,y_170,w_853,h_839/fill/w_240,h_236,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Arpit.jpg",
+  "https://static.wixstatic.com/media/ba4451_f207af4a1c95416aae8c594103c29a13~mv2.jpg/v1/crop/x_383,y_1326,w_2912,h_2864/fill/w_240,h_236,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/AdityaBatra.jpg",
+  "https://static.wixstatic.com/media/ba4451_3f0098c1a2fe4639bbde642dbbe8e28d~mv2.jpg/v1/crop/x_677,y_1657,w_2282,h_2245/fill/w_240,h_236,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/AkshayNair.jpg",
+  "https://static.wixstatic.com/media/ba4451_70de489a788b46399c4d7b60f447b899~mv2.jpg/v1/crop/x_625,y_1696,w_2282,h_2245/fill/w_240,h_236,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/RiddhiMittal.jpg",
+  "https://static.wixstatic.com/media/ba4451_66d9edb78fc642b1b5960d5ee6c8e283~mv2.jpg/v1/crop/x_484,y_1559,w_2608,h_2569/fill/w_240,h_236,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/HeetSarvaiya.jpg",
+  "https://static.wixstatic.com/media/ba4451_26e948b75cc1491981964e16024b22f6~mv2.jpg/v1/crop/x_661,y_1582,w_2559,h_2517/fill/w_240,h_236,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/HiyaSinghvi.jpg",
+  "https://static.wixstatic.com/media/ba4451_946d58aedd4a42e19d45875f95cdf32e~mv2.jpg/v1/crop/x_570,y_1643,w_2413,h_2373/fill/w_240,h_236,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/PallaviWarhatkar.jpg"
+];
+TEAM.forEach((t, i) => t.push(TEAM_PHOTOS[i]));
+const GALLERY = [
+  [IMG.findUs,"The FIC team"],[IMG.damodaran,"Knowledge Session by Prof. Aswath Damodaran"],[IMG.eventsNov25,"FIC event, November 2025"],[IMG.lecturesDec24,"Guest lecture, December 2024"],
+  [IMG.faoty1,"FAOTY 2.0 recap"],[IMG.faoty2,"FAOTY 2.0 recap"],[IMG.faoty3,"FAOTY 2.0 recap"],[IMG.faoty4,"FAOTY 2.0 recap"],
+  [IMG.eventsHero,"FIC events"],[IMG.lecture2,"Guest lecture"],[IMG.credit,"Credit Risk in Indian Banking"],[IMG.icici,"ICICI Direct StockMIND"],[IMG.budget,"Newshour: Union Budget analysis"],[IMG.club,"Finance & Investment Club, IIM Rohtak"]
+];
+/* ================= CORE ================= */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const inr = (n, d = 0) => (n < 0 ? "−" : "") + "₹" + Math.abs(n).toLocaleString("en-IN", {maximumFractionDigits:d, minimumFractionDigits:d});
+const fmt = (n, d = 2) => (n < 0 ? "−" : "") + Math.abs(n).toLocaleString("en-IN", {maximumFractionDigits:d, minimumFractionDigits:d});
+const pct = (n, d = 2) => (n < 0 ? "−" : "") + Math.abs(n * 100).toFixed(d) + "%";
+const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+function toast(msg){ const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove("show"), 2600); }
+function copyText(text, okMsg){
+  try { navigator.clipboard.writeText(text).then(() => toast(okMsg || "Copied"), () => toast("Copy blocked here. Select the text and copy it manually.")); }
+  catch(e){ toast("Copy blocked here. Select the text and copy it manually."); }
+}
+
+/* ---- original-site images: fill [data-img], drop any image that fails so the fallback shows ---- */
+const im = (src, alt, extra = "") => src ? `<img src="${src}" alt="${esc(alt)}" loading="lazy" decoding="async" ${extra}>` : "";
+document.addEventListener("error", e => { const t = e.target; if (t && t.tagName === "IMG" && t.id !== "lbImg") { t.closest(".ph")?.classList.add("noimg"); t.remove(); } }, true);
+$$("img[data-img]").forEach(i => { if (IMG[i.dataset.img]) { i.loading = "lazy"; i.decoding = "async"; i.src = IMG[i.dataset.img]; } else i.remove(); });
+
+/* ---- points & badges: this browser only ---- */
+const BADGES = {
+  firstTrade:"First Allocation", quizAce:"Quiz Ace", fraudHunter:"Fraud Hunter", valuer:"Valuer", chartist:"Chartist", wordsmith:"Wordsmith", dealmaker:"Dealmaker", habit:"Daily Habit"
+};
+const Store = {
+  k:"fic_arena_v1",
+  get(){ try { return Object.assign({points:0,best:{},badges:[],daily:{},streak:0,last:null}, JSON.parse(localStorage.getItem(this.k) || "{}")); } catch(e){ return {points:0,best:{},badges:[],daily:{},streak:0,last:null}; } },
+  set(s){ try { localStorage.setItem(this.k, JSON.stringify(s)); } catch(e){} renderPts(); },
+  add(pts, game, score){
+    const s = this.get(); s.points += Math.round(pts);
+    if (game != null && score != null) s.best[game] = Math.max(s.best[game] || 0, Math.round(score));
+    this.set(s);
+  },
+  badge(id){ const s = this.get(); if (!s.badges.includes(id)) { s.badges.push(id); this.set(s); toast("Badge earned: " + BADGES[id]); } }
+};
+function renderPts(){
+  const el = $("#ptsBar"); if (!el) return; const s = Store.get();
+  el.innerHTML = `<span><span class="eyebrow">Your points</span> <b class="num" style="font-size:1.2rem">${s.points}</b></span>
+   <span class="muted small">Daily streak: <b class="num">${s.streak}</b></span>
+   <div class="badges">${Object.entries(BADGES).map(([k,v]) => `<span class="badge ${s.badges.includes(k) ? "got" : ""}" title="${s.badges.includes(k) ? "Earned" : "Not earned yet"}">${v}</span>`).join("")}</div>
+   <span class="small muted" style="margin-left:auto">Saved in this browser only. No leaderboard yet (needs Wix Members + CMS, see guide).</span>`;
+}
+
+/* ================= ROUTER ================= */
+const VIEWS = ["home","about","publications","arena","toolkit","events","team","contact"];
+const GAMES = ["quiz","portfolio","scam","valuation","bullbear","crossword","deal"];
+function route(){
+  const h = (location.hash || "#home").slice(1);
+  let view = VIEWS.includes(h) ? h : "home", game = null, anchor = null;
+  if (GAMES.includes(h)) { view = "arena"; game = h; }
+  if (h === "contribute") { view = "publications"; anchor = "contribute"; }
+  $$(".view").forEach(v => v.classList.toggle("on", v.dataset.view === view));
+  $$("nav.main a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + view ? "page" : "false"));
+  $("#mainNav").classList.remove("open"); $("#menuBtn").setAttribute("aria-expanded","false");
+  if (view === "arena") openGame(game || "lobby");
+  document.title = (view === "home" ? "FIC IIM Rohtak" : $(`nav.main a[href="#${view}"]`).textContent + " · FIC IIM Rohtak");
+  if (anchor) setTimeout(() => document.getElementById(anchor)?.scrollIntoView({behavior:"smooth"}), 30);
+  else window.scrollTo({top:0});
+  if (view === "home") drawHero();
+}
+window.addEventListener("hashchange", route);
+$("#menuBtn").addEventListener("click", e => { const n = $("#mainNav"); n.classList.toggle("open"); e.currentTarget.setAttribute("aria-expanded", n.classList.contains("open")); });
+document.addEventListener("click", e => {
+  const g = e.target.closest("[data-open-game]"); if (g) { e.preventDefault(); location.hash = g.dataset.openGame; }
+  const c = e.target.closest("[data-copy]"); if (c) copyText(c.dataset.copy, "Email address copied");
+});
+
+/* ================= HOME ================= */
+const latest = k => ARCHIVE.find(a => a[0] === k);
+function pubCard(k){
+  const p = PUBS[k], l = latest(k), n = ARCHIVE.filter(a => a[0] === k).length;
+  return `<article class="card pub">
+    <a href="${l[5]}" target="_blank" rel="noopener" class="cover ${p.cls}" aria-label="Read the latest ${esc(p.name)}">${im(p.cover, p.name + " cover")}<span class="cs">${esc(p.cad)}</span><span class="ct">${esc(p.name)}</span><span class="ci">FIC · IIM Rohtak</span></a>
+    <div class="body">
+      <div class="row" style="gap:5px">${p.tags.map(t => `<span class="chip">${esc(t)}</span>`).join("")}</div>
+      <p>${esc(p.desc)}</p>
+      <div class="latest"><span class="muted">Latest:</span> <b>${esc(l[1].replace(p.name + " · ",""))}</b></div>
+      <div class="row"><a class="btn pri sm" href="${l[5]}" target="_blank" rel="noopener">Read now</a>${n > 1 ? `<a class="btn ghost sm" href="#publications" data-filter-pub="${k}">Archive · ${n}</a>` : ""}</div>
+    </div></article>`;
+}
+function renderHome(){
+  $("#belt").innerHTML = (() => { const items = ["arb","pf","cc","fs","fc"].flatMap(k => ARCHIVE.filter(a => a[0] === k).slice(0, k === "arb" ? 2 : 3)).map(a => `<a href="${a[5]}" target="_blank" rel="noopener"><span class="tag">${PUBS[a[0]].name.toUpperCase()}</span>${esc(a[1].replace(PUBS[a[0]].name + " · ",""))}</a>`).join(""); return items + items; })();
+  $("#heroSide").innerHTML = `
+    <figure class="ph photo" style="margin:0">${im(IMG.club, "Members of the Finance and Investment Club, IIM Rohtak")}</figure>
+    <div class="latest-list">
+      <a href="${latest("arb")[5]}" target="_blank" rel="noopener"><span>New in Arbitrage</span>${latest("arb")[1].split(" · ")[1]} issue</a>
+      <a href="${latest("pf")[5]}" target="_blank" rel="noopener"><span>Profit Formula</span>${esc(latest("pf")[1])}</a>
+      <a href="${latest("cc")[5]}" target="_blank" rel="noopener"><span>Corporate Chronicles · Scandal Sheet</span>${esc(latest("cc")[1])}</a>
+    </div>`;
+  $("#pulse").innerHTML = PULSE.rows.map(([n,p,c]) => `<div class="q"><span class="n">${n}</span><span class="p">${p}</span><span class="c ${c >= 0 ? "up-t" : "down-t"}">${c >= 0 ? "▲" : "▼"} ${Math.abs(c).toFixed(2)}%</span></div>`).join("");
+  $("#pulseMeta").textContent = PULSE.asOf + ". " + PULSE.source + ".";
+  const cards = ["arb","cc","pf","fc"].map(pubCard).join("");
+  $("#pubCards").innerHTML = cards;
+  $("#pubCards2").innerHTML = ["arb","cc","pf","fs"].map(pubCard).join("");
+  $("#homeUpcoming").innerHTML = upcomingHTML();
+  $("#homeRecent").innerHTML = EVENTS.slice(0,4).map(evRow).join("");
+  $("#glance").innerHTML = GLANCE.map(([n,l]) => `<div class="s"><span class="big">${n}</span><span class="lb">${l}</span></div>`).join("");
+  $("#glanceNote").textContent = "Counted from the current website archive on 15 Oct 2026. Stored as editable data (a CMS collection on Wix), not hard-coded into the design.";
+  $("#footPubs").innerHTML = Object.entries(PUBS).map(([k,p]) => `<li><a href="${p.page}" target="_blank" rel="noopener">${p.name}</a></li>`).join("");
+  $("#footSocial").innerHTML = SOCIAL.map(([n,u]) => `<li><a href="${u}" target="_blank" rel="noopener">${n}</a></li>`).join("");
+  renderDaily();
+}
+document.addEventListener("click", e => { const f = e.target.closest("[data-filter-pub]"); if (f) { setTimeout(() => { $("#apub").value = f.dataset.filterPub; renderArchive(); $("#aq").scrollIntoView({behavior:"smooth", block:"center"}); }, 40); } });
+
+function upcomingHTML(){
+  if (!UPCOMING.length) return `<div class="empty"><b style="color:var(--ink)">No upcoming events are published yet.</b><br>Dated events, speakers and registration links appear here once the club adds them to the Events collection. Meanwhile, follow FIC on <a href="${SOCIAL[0][1]}" target="_blank" rel="noopener">LinkedIn</a> or <a href="${SOCIAL[1][1]}" target="_blank" rel="noopener">Instagram</a> for announcements.</div>`;
+  return `<div class="ev-list">${UPCOMING.map(evRow).join("")}</div>`;
+}
+function evRow(e){
+  return `<div class="ev ${e.img ? "has-img" : ""}"><div class="when">${esc(e.when)}</div>${e.img ? `<div class="ph evimg">${im(e.img, e.title)}</div>` : ""}<div><h4>${esc(e.title)}</h4>${e.people ? `<p style="color:var(--ink);font-size:.86rem">${esc(e.people)}</p>` : ""}<p>${esc(e.desc)}</p></div><div><span class="chip ${e.type === "Competition" ? "gold" : e.type === "Lecture" ? "ever" : ""}">${e.type}</span></div></div>`;
+}
+
+/* ---- daily question ---- */
+function todayIST(){ const d = new Date(Date.now() + 5.5 * 3600e3); return d.toISOString().slice(0,10); }
+function renderDaily(){
+  const day = todayIST(), idx = Math.floor(Date.parse(day) / 864e5) % QUIZ.length, Q = QUIZ[idx], s = Store.get(), done = s.daily[day];
+  const order = (() => { let seed = idx * 7 + 3; return Q.o.map((o,i) => ({o,i,r:(seed = (seed * 9301 + 49297) % 233280)})).sort((a,b) => a.r - b.r); })();
+  const box = $("#dailyBox");
+  box.innerHTML = `<div class="row" style="justify-content:space-between;margin-bottom:10px"><span class="chip ever">${Q.c}</span><span class="mono small muted">${day}</span></div>
+    <h4 style="font-family:var(--f-display);font-size:1.25rem;font-weight:500;margin-bottom:14px">${esc(Q.q)}</h4>
+    <div class="opts">${order.map((x,j) => `<button class="opt" data-i="${x.i}" ${done ? "disabled" : ""}><span class="k">${"ABCD"[j]}</span><span>${esc(x.o)}</span></button>`).join("")}</div>
+    <div class="explain" ${done ? "" : "hidden"}><p><b>${done && done.ok ? "Correct. +10 points." : done ? "Not this time." : ""}</b> ${esc(Q.e)}</p></div>`;
+  if (done) $$(".opt", box).forEach(b => { if (+b.dataset.i === Q.a) b.classList.add("right"); else if (+b.dataset.i === done.pick) b.classList.add("wrong"); });
+  $$(".opt", box).forEach(b => b.addEventListener("click", () => {
+    const pick = +b.dataset.i, ok = pick === Q.a, st = Store.get();
+    const y = new Date(Date.parse(day) - 864e5).toISOString().slice(0,10);
+    st.streak = st.last === y ? st.streak + 1 : 1; st.last = day; st.daily[day] = {pick, ok};
+    if (ok) st.points += 10; Store.set(st); if (st.streak >= 3) Store.badge("habit"); renderDaily();
+  }));
+}
+
+/* ---- hero + feature canvases ---- */
+function drawHero(){
+  const c = $("#heroCanvas"); if (!c || !c.offsetWidth) return;
+  const dpr = devicePixelRatio || 1, w = c.offsetWidth, h = c.offsetHeight; c.width = w * dpr; c.height = h * dpr;
+  const x = c.getContext("2d"); x.scale(dpr, dpr); x.clearRect(0,0,w,h);
+  let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  x.strokeStyle = "rgba(255,255,255,.05)"; x.lineWidth = 1;
+  for (let gx = 0; gx < w; gx += 64) { x.beginPath(); x.moveTo(gx + .5, 0); x.lineTo(gx + .5, h); x.stroke(); }
+  for (let gy = 0; gy < h; gy += 64) { x.beginPath(); x.moveTo(0, gy + .5); x.lineTo(w, gy + .5); x.stroke(); }
+  const lines = [["rgba(214,177,98,.8)",1.6,.62,.004],["rgba(76,175,131,.55)",1.3,.72,.002],["rgba(238,241,244,.16)",1,.5,.003]];
+  lines.forEach(([col,lw,base,drift]) => {
+    x.strokeStyle = col; x.lineWidth = lw; x.beginPath(); let y = h * base;
+    for (let px = 0; px <= w; px += 6) { y += (rnd() - .5 - drift * 6) * 9; y = clamp(y, h * .15, h * .95); px ? x.lineTo(px, y) : x.moveTo(px, y); }
+    x.stroke();
+  });
+}
+function drawFeature(){
+  const c = $("#featCanvas"); if (!c || !c.offsetWidth) return;
+  const dpr = devicePixelRatio || 1, w = c.offsetWidth, h = c.offsetHeight; c.width = w * dpr; c.height = h * dpr;
+  const x = c.getContext("2d"); x.scale(dpr, dpr);
+  const parts = [[.45,css("--ever")],[.25,css("--ever-2")],[.12,css("--gold")],[.08,css("--muted")],[.10,css("--line")]];
+  const cx = w / 2, cy = h / 2, r = Math.min(w, h) * .32; let a = -Math.PI / 2;
+  parts.forEach(([p,col]) => { x.beginPath(); x.strokeStyle = col; x.lineWidth = r * .42; x.arc(cx, cy, r, a, a + p * Math.PI * 2 - .02); x.stroke(); a += p * Math.PI * 2; });
+  x.fillStyle = css("--ink"); x.font = "500 20px 'IBM Plex Mono', monospace"; x.textAlign = "center"; x.fillText("₹1,00,000", cx, cy + 4);
+  x.fillStyle = css("--muted"); x.font = "11px 'IBM Plex Mono', monospace"; x.fillText("SAMPLE ALLOCATION", cx, cy + 22);
+}
+let _rz; window.addEventListener("resize", () => { clearTimeout(_rz); _rz = setTimeout(() => { drawHero(); drawFeature(); }, 150); });
+
+/* ================= ARCHIVE ================= */
+function initArchive(){
+  $("#apub").innerHTML = `<option value="">All publications</option>` + Object.entries(PUBS).map(([k,p]) => `<option value="${k}">${p.name}</option>`).join("");
+  const topics = [...new Set(ARCHIVE.flatMap(a => a[4]))].sort();
+  $("#atopic").innerHTML = `<option value="">All topics</option>` + topics.map(t => `<option>${t}</option>`).join("");
+  const years = [...new Set(ARCHIVE.map(a => a[2]).filter(Boolean))].sort((a,b) => b - a);
+  $("#ayear").innerHTML = `<option value="">All years</option>` + years.map(y => `<option>${y}</option>`).join("") + `<option value="undated">Undated</option>`;
+  ["aq","apub","atopic","ayear"].forEach(id => $("#" + id).addEventListener("input", renderArchive));
+  renderArchive();
+}
+function renderArchive(){
+  const q = $("#aq").value.trim().toLowerCase(), p = $("#apub").value, t = $("#atopic").value, y = $("#ayear").value;
+  const list = ARCHIVE.filter(a => (!p || a[0] === p) && (!t || a[4].includes(t)) && (!y || (y === "undated" ? !a[2] : String(a[2]) === y)) && (!q || (a[1] + " " + a[4].join(" ") + " " + PUBS[a[0]].name).toLowerCase().includes(q)));
+  $("#acount").textContent = `${list.length} of ${ARCHIVE.length} issues`;
+  $("#arch").innerHTML = list.length ? list.map(a => `<a class="card item" href="${a[5]}" target="_blank" rel="noopener">
+      <span class="top"><span class="ph thumb">${im(FS_THUMB[a[1]] || PUBS[a[0]].thumb, "")}</span><span class="stack" style="gap:4px;min-width:0"><span class="src ${a[0]}">${PUBS[a[0]].name}</span><span class="t">${esc(a[1].replace(PUBS[a[0]].name + " · ",""))}</span></span></span>
+      <span class="m">${a[4].map(x => `<span class="chip">${x}</span>`).join("")}${a[2] ? `<span class="chip">${a[2]}</span>` : `<span class="chip">Undated</span>`}</span>
+      <span class="small muted">Opens PDF in a new tab ↗</span></a>`).join("")
+    : `<div class="empty">No issues match. Clear a filter or try a broader word.</div>`;
+}
+
+/* ================= EVENTS / PEOPLE ================= */
+function renderEvents(){
+  $("#evUpcoming").innerHTML = upcomingHTML();
+  const types = ["All", ...new Set(EVENTS.map(e => e.type))];
+  $("#evFilters").innerHTML = types.map((t,i) => `<button class="btn sm ${i ? "ghost" : "pri"}" data-t="${t}" aria-pressed="${!i}">${t}</button>`).join("");
+  const draw = t => { $("#evAll").innerHTML = EVENTS.filter(e => t === "All" || e.type === t).map(evRow).join(""); };
+  $$("#evFilters button").forEach(b => b.addEventListener("click", () => { $$("#evFilters button").forEach(x => { x.className = "btn sm ghost"; x.setAttribute("aria-pressed","false"); }); b.className = "btn sm pri"; b.setAttribute("aria-pressed","true"); draw(b.dataset.t); }));
+  draw("All");
+  const ini = n => n.replace(/^(Prof\.|Mr\.|Ms\.)\s*/,"").split(/[ ,]/).filter(Boolean).slice(0,2).map(w => w[0]).join("");
+  $("#speakers").innerHTML = SPEAKERS.map(s => `<div class="card"><div class="row"><span class="avatar">${ini(s.name)}</span><div style="min-width:0"><b>${esc(s.name)}</b><div class="small muted">${esc(s.role)}</div></div></div><p class="small"><span class="eyebrow">Session</span><br>${esc(s.session)}</p><p class="small muted">${esc(s.note)}</p></div>`).join("");
+  $("#lessons").innerHTML = LESSONS.map(l => `<div class="stack" style="gap:6px"><p class="quote">${esc(l.what)}</p><span class="small muted">${esc(l.who)} · paraphrased from FIC's session write-up</span></div>`).join("");
+  $("#people").innerHTML = TEAM.map(([n,r,u,ph]) => `<div class="card person"><span class="avatar">${n.split(" ").map(w => w[0]).join("")}${im(ph, n)}</span><div style="min-width:0"><b>${n}</b><span>${r}</span><br><a class="small" href="${u}" target="_blank" rel="noopener">LinkedIn ↗</a></div></div>`).join("");
+  $("#gallery").innerHTML = GALLERY.map(([src,cap],i) => `<button class="ph" type="button" data-g="${i}" aria-label="Enlarge: ${esc(cap)}"><span class="fb">${esc(cap)}</span>${im(src, cap)}</button>`).join("");
+  $("#gallery").addEventListener("click", e => { const b = e.target.closest("[data-g]"); if (!b) return; const [src,cap] = GALLERY[+b.dataset.g]; $("#lbImg").src = src; $("#lbImg").alt = cap; $("#lbCap").textContent = cap; $("#lightbox").hidden = false; $("#lbClose").focus(); });
+  const closeLb = () => { $("#lightbox").hidden = true; $("#lbImg").removeAttribute("src"); };
+  $("#lbClose").addEventListener("click", closeLb); $("#lightbox").addEventListener("click", e => { if (e.target.id === "lightbox") closeLb(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#lightbox").hidden) closeLb(); });
+  $("#contactPeople").innerHTML = CONTACTS.map(([n,p]) => `<div class="row" style="justify-content:space-between"><span>${n}</span><span class="mono">${p}</span></div>`).join("");
+  $("#verticals").innerHTML = VERTICALS.map(v => `<span class="chip ever">${v}</span>`).join("");
+}
+
+/* ================= FORMS ================= */
+const emailOK = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+function fieldErr(input, errEl, msg){ input && input.setAttribute("aria-invalid", msg ? "true" : "false"); if (errEl) errEl.textContent = msg || ""; return !msg; }
+$("#newsForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const a = fieldErr($("#nlEmail"), $("#nlEmailErr"), emailOK($("#nlEmail").value.trim()) ? "" : "Enter a valid email address, like name@iimrohtak.ac.in.");
+  const b = fieldErr(null, $("#nlConsentErr"), $("#nlConsent").checked ? "" : "Tick the box to agree to receive emails.");
+  if (a && b) { $("#nlOut").innerHTML = `<span class="ok-msg">Looks good. In this prototype nothing was sent; on the live site this adds ${esc($("#nlEmail").value.trim())} to the mailing list.</span>`; e.target.reset(); }
+});
+const words = s => (s.trim().match(/\S+/g) || []).length;
+$("#pAbs").addEventListener("input", () => { $("#pWords").textContent = words($("#pAbs").value) + " words"; });
+$("#pitchForm").addEventListener("submit", e => {
+  e.preventDefault(); const w = words($("#pAbs").value);
+  const ok = [
+    fieldErr($("#pEmail"), $("#pEmailErr"), emailOK($("#pEmail").value.trim()) ? "" : "Enter a valid email address."),
+    fieldErr($("#pAbs"), $("#pAbsErr"), w >= 50 && w <= 300 ? "" : `Summary is ${w} words. Keep it between 50 and 300.`),
+    fieldErr(null, $("#pOrigErr"), $("#pOrig").checked ? "" : "Confirm the work is original."),
+    !!$("#pName").value.trim() && !!$("#pTitle").value.trim()
+  ].every(Boolean);
+  if (!$("#pName").value.trim() || !$("#pTitle").value.trim()) $("#pOut").innerHTML = `<span class="err">Add your name and a working title.</span>`;
+  else if (ok) { $("#pOut").innerHTML = `<span class="ok-msg">Pitch validated. In this prototype nothing was sent; on Wix it would go to the Editorial team's moderation queue.</span>`; e.target.reset(); $("#pWords").textContent = "0 words"; }
+});
+$("#contactForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const ok = [fieldErr($("#cEmail"), $("#cEmailErr"), emailOK($("#cEmail").value.trim()) ? "" : "Enter a valid email address."),
+    fieldErr($("#cMsg"), $("#cMsgErr"), $("#cMsg").value.trim().length >= 10 ? "" : "Write at least a sentence so we know how to help.")].every(Boolean);
+  if (ok) { $("#cOut").innerHTML = `<span class="ok-msg">Message validated. In this prototype nothing was sent.</span>`; e.target.reset(); }
+});
+
+/* ================= SITE SEARCH ================= */
+function searchIndex(){
+  const idx = [];
+  ARCHIVE.forEach(a => idx.push({t:a[1], k:PUBS[a[0]].name, href:a[5], ext:true, s:a[4].join(" ")}));
+  [["Finance Quiz Arena","quiz"],["Portfolio Manager for a Minute","portfolio"],["Decode the Scam","scam"],["The Valuation Lab","valuation"],["Bull vs Bear","bullbear"],["Financial Markets Crossword","crossword"],["The Deal Room","deal"]].forEach(([t,h]) => idx.push({t, k:"Finance Arena", href:"#" + h}));
+  TOOLS.forEach(tl => idx.push({t:tl.name, k:"Finance Toolkit", href:"#toolkit", tool:tl.id, s:tl.formula}));
+  EVENTS.forEach(e => idx.push({t:e.title, k:"Event · " + e.type, href:"#events", s:(e.people || "") + " " + e.desc}));
+  TEAM.forEach(([n,r]) => idx.push({t:n, k:"Team · " + r, href:"#team"}));
+  return idx;
+}
+let IDX;
+$("#q").addEventListener("input", e => {
+  IDX = IDX || searchIndex(); const q = e.target.value.trim().toLowerCase(), box = $("#qres");
+  if (q.length < 2) { box.hidden = true; return; }
+  const hits = IDX.filter(i => (i.t + " " + i.k + " " + (i.s || "")).toLowerCase().includes(q)).slice(0, 12);
+  box.innerHTML = hits.length ? hits.map(h => `<a href="${h.href}" ${h.ext ? 'target="_blank" rel="noopener"' : ""} ${h.tool ? `data-tool="${h.tool}"` : ""}><small>${esc(h.k)}</small>${esc(h.t)}</a>`).join("") : `<a href="#publications"><small>No match</small>Browse the full archive</a>`;
+  box.hidden = false;
+});
+$("#qres").addEventListener("click", e => { const a = e.target.closest("a"); if (a?.dataset.tool) setTimeout(() => selectTool(a.dataset.tool), 30); $("#qres").hidden = true; $("#q").value = ""; });
+document.addEventListener("click", e => { if (!e.target.closest(".search")) $("#qres").hidden = true; });
+$("#q").addEventListener("keydown", e => { if (e.key === "Escape") { $("#qres").hidden = true; e.target.blur(); } if (e.key === "Enter") { const f = $("#qres a"); f && f.click(); } });
+/* ================= FINANCE ARENA ================= */
+const GAME_META = {
+  quiz:{name:"Finance Quiz Arena",d:"All levels",t:"4–8 min",p:"Multiple choice across 8 categories, with an explanation after every answer."},
+  portfolio:{name:"Portfolio Manager for a Minute",d:"Intermediate",t:"3 min",p:"Allocate a hypothetical ₹1,00,000, face a market scenario, rebalance once, and see the result."},
+  scam:{name:"Decode the Scam",d:"Intermediate",t:"5 min",p:"Spot the red flags in a fictional case and a documented Indian fraud."},
+  valuation:{name:"The Valuation Lab",d:"Advanced",t:"Open-ended",p:"Change growth, margins, capex, WACC and terminal growth, and watch a DCF respond."},
+  bullbear:{name:"Bull vs Bear",d:"Beginner",t:"2 min",p:"Read a simulated chart and its context. Call the next move."},
+  crossword:{name:"Financial Markets Crossword",d:"Beginner",t:"5 min",p:"Eleven market terms, clues, hints and a completion score."},
+  deal:{name:"The Deal Room",d:"Advanced",t:"6 min",p:"Price, finance and stress-test a fictional acquisition."}
+};
+const inited = {};
+function openGame(g){
+  const tabs = $("#arenaTabs");
+  if (!tabs.childElementCount) {
+    tabs.innerHTML = `<button role="tab" data-g="lobby">All games</button>` + GAMES.map(k => `<button role="tab" data-g="${k}">${GAME_META[k].name.replace("Financial Markets ","").replace(" for a Minute","")}</button>`).join("");
+    tabs.addEventListener("click", e => { const b = e.target.closest("button"); if (b) location.hash = b.dataset.g === "lobby" ? "arena" : b.dataset.g; });
+    $("#gameCards").innerHTML = GAMES.map(k => { const m = GAME_META[k]; return `<button class="card gcard" data-open-game="${k}"><div class="row" style="justify-content:space-between"><span class="chip ${k === "quiz" || k === "portfolio" || k === "scam" ? "gold" : ""}">${m.d}</span><span class="mono small muted">${m.t}</span></div><h4 style="font-family:var(--f-display);font-size:1.3rem;font-weight:500">${m.name}</h4><p>${m.p}</p><span class="small" style="color:var(--ever-2);font-weight:600">Play →</span></button>`; }).join("");
+    renderPts();
+  }
+  $$("#arenaTabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.g === g));
+  $$(".panel").forEach(p => p.classList.toggle("on", p.dataset.panel === g));
+  if (g !== "lobby" && !inited[g]) { inited[g] = true; ({quiz:Quiz, portfolio:Portfolio, scam:Scam, valuation:Valuation, bullbear:BullBear, crossword:Crossword, deal:Deal})[g].init(); }
+}
+const gameHead = (k, right = "") => `<div class="ghead"><div class="stack" style="gap:4px"><span class="eyebrow">${GAME_META[k].d} · ${GAME_META[k].t}</span><h2>${GAME_META[k].name}</h2></div>${right}</div>`;
+const shareBtn = text => `<button class="btn ghost sm" type="button" data-share="${esc(text)}">Copy result to share</button>`;
+document.addEventListener("click", e => { const s = e.target.closest("[data-share]"); if (s) copyText(s.dataset.share + " · Play at the FIC IIM Rohtak Finance Arena", "Result copied. Paste it anywhere."); });
+
+/* ---------- 1. QUIZ ---------- */
+const Quiz = {
+  init(){ this.setup(); },
+  setup(){
+    const cats = [...new Set(QUIZ.map(q => q.c))], best = Store.get().best.quiz;
+    $("#quiz").innerHTML = gameHead("quiz", best != null ? `<span class="chip gold">Personal best ${best}%</span>` : "") + `
+      <div class="stack" style="gap:16px;max-width:620px">
+        <div class="calc-inputs">
+          <label class="f" for="qzCat">Category<select id="qzCat"><option value="">All categories</option>${cats.map(c => `<option>${c}</option>`).join("")}</select></label>
+          <label class="f" for="qzDiff">Difficulty<select id="qzDiff"><option value="">Mixed</option><option>Easy</option><option>Medium</option><option>Hard</option></select></label>
+          <label class="f" for="qzLen">Questions<select id="qzLen"><option>5</option><option selected>8</option><option>12</option></select></label>
+        </div>
+        <p class="small muted" id="qzAvail"></p>
+        <div><button class="btn pri" id="qzStart">Start quiz</button></div>
+        <p class="small muted">${QUIZ.length} questions in the bank. The club adds more by adding rows to the question list, with no change to the interface.</p>
+      </div>`;
+    const avail = () => { const n = this.pool().length; $("#qzAvail").textContent = n + " questions match these filters."; $("#qzStart").disabled = n === 0; };
+    ["qzCat","qzDiff"].forEach(id => $("#" + id).addEventListener("input", avail)); avail();
+    $("#qzStart").addEventListener("click", () => this.start());
+  },
+  pool(){ const c = $("#qzCat")?.value, d = $("#qzDiff")?.value; return QUIZ.filter(q => (!c || q.c === c) && (!d || q.d === d)); },
+  start(){
+    const n = +$("#qzLen").value; this.qs = shuffle(this.pool()).slice(0, n).map(q => ({...q, order:shuffle(q.o.map((_,i) => i))}));
+    this.i = 0; this.score = 0; this.log = []; this.show();
+  },
+  show(){
+    const q = this.qs[this.i], N = this.qs.length;
+    $("#quiz").innerHTML = gameHead("quiz", `<div class="statline"><div class="stat"><div class="k">Score</div><div class="v">${this.score}/${N}</div></div><div class="stat"><div class="k">Question</div><div class="v">${this.i + 1}/${N}</div></div></div>`) + `
+      <div class="progress" aria-hidden="true"><i style="width:${this.i / N * 100}%"></i></div>
+      <div class="stack" style="gap:14px;margin-top:20px;max-width:760px">
+        <div class="row"><span class="chip ever">${q.c}</span><span class="chip">${q.d}</span></div>
+        <h3 style="font-size:1.45rem">${esc(q.q)}</h3>
+        <div class="opts">${q.order.map((oi,j) => `<button class="opt" data-i="${oi}"><span class="k">${"ABCD"[j]}</span><span>${esc(q.o[oi])}</span></button>`).join("")}</div>
+        <div class="explain" id="qzEx" hidden></div>
+      </div>`;
+    $$("#quiz .opt").forEach(b => b.addEventListener("click", () => this.answer(+b.dataset.i)));
+  },
+  answer(pick){
+    const q = this.qs[this.i], ok = pick === q.a; if (ok) this.score++; this.log.push({c:q.c, ok});
+    $$("#quiz .opt").forEach(b => { b.disabled = true; const i = +b.dataset.i; if (i === q.a) b.classList.add("right"); else if (i === pick) b.classList.add("wrong"); });
+    const last = this.i === this.qs.length - 1, ex = $("#qzEx"); ex.hidden = false;
+    ex.innerHTML = `<p><b style="color:${ok ? "var(--up)" : "var(--down)"}">${ok ? "Correct." : "Not quite."}</b> ${esc(q.e)}</p><div style="margin-top:12px"><button class="btn pri" id="qzNext">${last ? "See summary" : "Next question"}</button></div>`;
+    $(".statline .v").textContent = `${this.score}/${this.qs.length}`;
+    $("#qzNext").addEventListener("click", () => { this.i++; last ? this.summary() : this.show(); }); $("#qzNext").focus();
+  },
+  summary(){
+    const N = this.qs.length, p = Math.round(this.score / N * 100), byCat = {};
+    this.log.forEach(l => { byCat[l.c] = byCat[l.c] || [0,0]; byCat[l.c][1]++; if (l.ok) byCat[l.c][0]++; });
+    const prev = Store.get().best.quiz || 0; Store.add(this.score * 5, "quiz", p); if (p >= 80 && N >= 5) Store.badge("quizAce");
+    const weak = Object.entries(byCat).filter(([,v]) => v[0] / v[1] < .5).map(([c]) => c);
+    $("#quiz").innerHTML = gameHead("quiz") + `<div class="progress"><i style="width:100%"></i></div>
+      <div class="two" style="margin-top:22px">
+        <div class="stack" style="gap:12px">
+          <span class="eyebrow">Final score</span><div style="font-family:var(--f-display);font-size:4rem;line-height:1">${p}%</div>
+          <p>${this.score} of ${N} correct · +${this.score * 5} points${p > prev ? ` · <b style="color:var(--gold)">New personal best</b>` : ` · Personal best ${Math.max(prev,p)}%`}</p>
+          <p class="muted">${p >= 80 ? "Strong performance. Try Hard difficulty next." : p >= 50 ? "Solid base. Review the explanations for the ones you missed." : "Good start. FinSage's beginner series covers the fundamentals behind many of these questions."}</p>
+          ${weak.length ? `<p class="small">Revisit: <b>${weak.join(", ")}</b></p>` : ""}
+          <div class="row"><button class="btn pri" id="qzAgain">Play again</button>${shareBtn(`I scored ${p}% (${this.score}/${N}) in the FIC Finance Quiz Arena`)}</div>
+        </div>
+        <div class="scroll"><table class="t"><thead><tr><th>Category</th><th>Correct</th></tr></thead><tbody>${Object.entries(byCat).map(([c,v]) => `<tr><td>${c}</td><td>${v[0]}/${v[1]}</td></tr>`).join("")}</tbody></table></div>
+      </div>`;
+    $("#qzAgain").addEventListener("click", () => this.setup());
+  }
+};
+
+/* ---------- 2. PORTFOLIO MANAGER ---------- */
+const ASSETS = [
+  {k:"eq",n:"Indian equity",vol:.18,c:"--ever"},{k:"debt",n:"Debt",vol:.05,c:"--ever-2"},{k:"gold",n:"Gold",vol:.14,c:"--gold"},{k:"cash",n:"Cash",vol:.005,c:"--muted"},{k:"glob",n:"Global equity",vol:.16,c:"--down"}
+];
+const CORR = {"eq|glob":.6,"eq|gold":-.1,"eq|debt":.1,"debt|gold":.1,"gold|glob":0,"debt|glob":0};
+const SCENARIOS = [
+  {name:"Surprise rate shock",clues:["The central bank raises rates by 1.5 percentage points in one meeting.","Bond yields jump; long-duration bonds reprice lower.","Credit tightens and the equity market sells off."],need:20000,needText:"Your college fee of ₹20,000 is due in month 2.",r:{eq:-.12,debt:-.04,gold:.06,cash:.065,glob:-.08},lesson:"Rate shocks hit both equities and bonds. Cash and gold cushioned the fall, and holding enough cash meant you did not have to sell equity at a low price to pay the fee."},
+  {name:"Liquidity-fuelled bull run",clues:["Inflation cools and rates are cut twice.","Foreign inflows hit a multi-year high.","Earnings upgrades spread across sectors."],need:0,r:{eq:.28,debt:.06,gold:-.03,cash:.05,glob:.18},lesson:"In a strong bull market, risk assets lead. A diversified investor still does well, while heavy cash or gold drags returns. Diversification costs some upside and buys protection in other scenarios."},
+  {name:"Stagflation",clues:["Oil spikes after a supply shock.","Inflation rises while growth slows.","Corporate margins come under pressure."],need:0,r:{eq:-.08,debt:-.02,gold:.18,cash:.06,glob:-.1},lesson:"When inflation rises and growth falls together, real assets such as gold tend to hold value while both stocks and bonds struggle. This is the case for owning something uncorrelated."},
+  {name:"Global risk-off, rupee slides",clues:["A global credit event triggers a flight to safety.","Foreign investors pull money from emerging markets.","The rupee weakens sharply against the dollar."],need:15000,needText:"A family medical bill of ₹15,000 arrives in month 1.",r:{eq:-.15,debt:.07,gold:.22,cash:.05,glob:.04},lesson:"Rupee depreciation lifts the rupee value of gold and global assets, partly offsetting their losses. Government bonds rallied as rates were cut. Currency diversification is a real risk tool for Indian investors."},
+  {name:"Steady growth",clues:["GDP grows close to trend with stable inflation.","No major policy surprises.","Earnings grow in line with the economy."],need:0,r:{eq:.12,debt:.075,gold:.04,cash:.06,glob:.1},lesson:"In ordinary years, a balanced portfolio compounds quietly. Most investing years look like this, which is why costs and discipline matter more than predictions."}
+];
+const Portfolio = {
+  init(){ this.w = {eq:40,debt:30,gold:10,cash:10,glob:10}; this.stage1(); },
+  vol(w){ let v = 0; const ks = ASSETS.map(a => a.k), A = Object.fromEntries(ASSETS.map(a => [a.k,a]));
+    ks.forEach(a => ks.forEach(b => { const rho = a === b ? 1 : (CORR[a + "|" + b] ?? CORR[b + "|" + a] ?? 0); v += (w[a] / 100) * (w[b] / 100) * A[a].vol * A[b].vol * rho; })); return Math.sqrt(Math.max(v,0)); },
+  hhi(w){ return Object.values(w).reduce((s,x) => s + (x / 100) ** 2, 0); },
+  donut(w){
+    let a = -Math.PI / 2, out = ""; const R = 70, r = 46, cx = 90, cy = 90, tot = Object.values(w).reduce((s,x) => s + x, 0) || 1;
+    ASSETS.forEach(as => { const f = w[as.k] / tot; if (f <= 0) return; const b = a + f * Math.PI * 2 - (f < 1 ? .015 : 0);
+      const large = b - a > Math.PI ? 1 : 0, p = (ang, rad) => [cx + rad * Math.cos(ang), cy + rad * Math.sin(ang)];
+      if (f >= .999) out += `<circle cx="${cx}" cy="${cy}" r="${(R + r) / 2}" fill="none" stroke="var(${as.c})" stroke-width="${R - r}"/>`;
+      else { const [x1,y1] = p(a,R), [x2,y2] = p(b,R), [x3,y3] = p(b,r), [x4,y4] = p(a,r);
+        out += `<path d="M${x1} ${y1}A${R} ${R} 0 ${large} 1 ${x2} ${y2}L${x3} ${y3}A${r} ${r} 0 ${large} 0 ${x4} ${y4}Z" fill="var(${as.c})"/>`; }
+      a += f * Math.PI * 2; });
+    return `<svg viewBox="0 0 180 180" width="180" height="180" role="img" aria-label="Allocation chart">${out}<text x="90" y="88" text-anchor="middle" style="font-size:13px;fill:var(--ink)">${tot}%</text><text x="90" y="104" text-anchor="middle" style="font-size:9px">ALLOCATED</text></svg>`;
+  },
+  sliders(prefix){
+    return ASSETS.map(a => `<div class="slider-row"><label for="${prefix}${a.k}"><span style="display:inline-block;width:9px;height:9px;border-radius:2px;background:var(${a.c});margin-right:6px"></span>${a.n}</label><input type="range" id="${prefix}${a.k}" min="0" max="100" step="5" value="${this.w[a.k]}"><span class="num" id="${prefix}${a.k}v"></span></div>`).join("");
+  },
+  stats(w){ const tot = Object.values(w).reduce((s,x) => s + x, 0);
+    return `<div class="statline"><div class="stat"><div class="k">Allocated</div><div class="v" style="color:${tot === 100 ? "var(--up)" : "var(--down)"}">${tot}%</div></div><div class="stat"><div class="k">Est. volatility</div><div class="v">${(this.vol(w) * 100).toFixed(1)}%</div></div><div class="stat"><div class="k">Diversification</div><div class="v">${Math.round(clamp((1 - this.hhi(w)) / .8, 0, 1) * 100)}/100</div></div><div class="stat"><div class="k">Cash on hand</div><div class="v">${inr(w.cash * 1000)}</div></div></div>`; },
+  bind(prefix, onChange){
+    ASSETS.forEach(a => { const s = $("#" + prefix + a.k), v = $("#" + prefix + a.k + "v");
+      const up = () => { this.cur[a.k] = +s.value; v.textContent = `${s.value}% · ${inr(+s.value * 1000)}`; onChange(); };
+      s.addEventListener("input", up); v.textContent = `${s.value}% · ${inr(+s.value * 1000)}`; });
+  },
+  stage1(){
+    this.cur = {...this.w};
+    $("#portfolio").innerHTML = gameHead("portfolio", `<span class="chip warn">Hypothetical returns · not advice</span>`) + `
+      <div class="two"><div class="stack" style="gap:14px">
+        <p class="muted">You have <b style="color:var(--ink)">₹1,00,000</b> of virtual money. Allocate it in 5% steps. You will not know the scenario until you lock in. Volatility is estimated from assumed long-run figures shown in the notes.</p>
+        ${this.sliders("pm")}
+        <div class="row"><button class="btn ghost sm" id="pmFix">Put the remainder in cash</button><button class="btn pri" id="pmGo">Lock in and face the market</button></div>
+        <p class="err" id="pmErr"></p>
+      </div><div class="stack" style="align-items:flex-start;gap:16px"><div id="pmDonut"></div><div id="pmStats"></div>
+        <p class="small muted">Assumed annual volatility: equity 18%, global equity 16%, gold 14%, debt 5%, cash 0.5%. Correlations: equity–global 0.6, equity–gold −0.1, equity–debt 0.1.</p></div></div>`;
+    const refresh = () => { $("#pmDonut").innerHTML = this.donut(this.cur); $("#pmStats").innerHTML = this.stats(this.cur); const t = Object.values(this.cur).reduce((s,x) => s + x, 0); $("#pmErr").textContent = t === 100 ? "" : t > 100 ? `You are over by ${t - 100}%. Reduce a slider.` : `${100 - t}% is unallocated.`; $("#pmGo").disabled = t !== 100; };
+    this.bind("pm", refresh); refresh();
+    $("#pmFix").addEventListener("click", () => { const t = Object.values(this.cur).reduce((s,x) => s + x, 0) - this.cur.cash; if (t > 100) { $("#pmErr").textContent = "Risk assets already exceed 100%. Reduce one first."; return; } this.cur.cash = 100 - t; $("#pmcash").value = this.cur.cash; $("#pmcash").dispatchEvent(new Event("input")); });
+    $("#pmGo").addEventListener("click", () => { this.w = {...this.cur}; this.sc = SCENARIOS[Math.floor(Math.random() * SCENARIOS.length)]; this.stage2(); });
+  },
+  stage2(){
+    const sc = this.sc; this.cur = {...this.w};
+    $("#portfolio").innerHTML = gameHead("portfolio", `<span class="chip warn">Hypothetical scenario</span>`) + `
+      <div class="two"><div class="stack" style="gap:12px">
+        <span class="eyebrow">Market scenario · next 12 months</span><h3 style="font-size:1.6rem">${sc.name}</h3>
+        ${sc.clues.map((c,i) => `<div class="clue"><span class="lab">Signal ${i + 1}</span>${c}</div>`).join("")}
+        ${sc.need ? `<div class="note"><b>Cash need:</b> ${sc.needText} Any shortfall is met by selling risk assets in a falling market, at an 8% loss on the amount sold.</div>` : `<div class="note ever">No cash emergency this year.</div>`}
+      </div><div class="stack" style="gap:12px">
+        <p class="muted">You may rebalance once before the year plays out. Moving money costs 0.25% of the amount traded.</p>
+        ${this.sliders("rb")}
+        <div id="rbStats"></div>
+        <div class="row"><button class="btn ghost" id="rbKeep">Keep my allocation</button><button class="btn pri" id="rbGo">Rebalance and play the year</button></div><p class="err" id="rbErr"></p>
+      </div></div>`;
+    const refresh = () => { const t = Object.values(this.cur).reduce((s,x) => s + x, 0), turn = ASSETS.reduce((s,a) => s + Math.abs(this.cur[a.k] - this.w[a.k]), 0) / 2;
+      $("#rbStats").innerHTML = this.stats(this.cur) + `<p class="small muted" style="margin-top:6px">Traded: ${turn}% · cost ${inr(turn * 1000 * .0025)}</p>`;
+      $("#rbErr").textContent = t === 100 ? "" : `Allocation must total 100% (now ${t}%).`; $("#rbGo").disabled = t !== 100; };
+    this.bind("rb", refresh); refresh();
+    $("#rbKeep").addEventListener("click", () => this.result(this.w, 0));
+    $("#rbGo").addEventListener("click", () => { const turn = ASSETS.reduce((s,a) => s + Math.abs(this.cur[a.k] - this.w[a.k]), 0) / 2; this.result({...this.cur}, turn * 1000 * .0025); });
+  },
+  result(w, cost){
+    const sc = this.sc, start = 100000 - cost, rows = ASSETS.map(a => { const amt = start * w[a.k] / 100; return {a, amt, r:sc.r[a.k], end:amt * (1 + sc.r[a.k])}; });
+    let end = rows.reduce((s,x) => s + x.end, 0); const cash = start * w.cash / 100, short = Math.max(0, sc.need - cash), pen = short * .08;
+    end -= pen; const R = end / 100000 - 1, rs = Object.values(sc.r), lo = Math.min(...rs), hi = Math.max(...rs);
+    const retS = 60 * clamp((R - lo) / (hi - lo), 0, 1), divS = 25 * clamp((1 - this.hhi(w)) / .8, 0, 1);
+    const liqS = sc.need ? 15 * clamp(cash / sc.need, 0, 1) : (w.cash >= 5 && w.cash <= 25 ? 15 : w.cash < 5 ? 8 : 6), score = Math.round(retS + divS + liqS);
+    Store.add(score, "portfolio", score); Store.badge("firstTrade");
+    $("#portfolio").innerHTML = gameHead("portfolio", `<span class="chip warn">Hypothetical outcome · not a forecast</span>`) + `
+      <div class="two"><div class="stack" style="gap:14px">
+        <span class="eyebrow">${sc.name} · one year later</span>
+        <div class="statline"><div class="stat"><div class="k">Portfolio value</div><div class="v" style="font-size:1.8rem">${inr(end)}</div></div><div class="stat"><div class="k">Return</div><div class="v ${R >= 0 ? "up-t" : "down-t"}" style="font-size:1.8rem">${pct(R,1)}</div></div><div class="stat"><div class="k">Score</div><div class="v" style="font-size:1.8rem">${score}/100</div></div></div>
+        <div class="scroll"><table class="t"><thead><tr><th>Asset</th><th>Weight</th><th>Invested</th><th>Return</th><th>End value</th></tr></thead><tbody>
+          ${rows.map(x => `<tr><td>${x.a.n}</td><td>${w[x.a.k]}%</td><td>${inr(x.amt)}</td><td class="${x.r >= 0 ? "up-t" : "down-t"}">${pct(x.r,1)}</td><td>${inr(x.end)}</td></tr>`).join("")}
+          ${cost ? `<tr><td>Rebalancing cost</td><td></td><td></td><td></td><td class="down-t">−${inr(cost)}</td></tr>` : ""}
+          ${pen ? `<tr><td>Forced-sale loss (cash short by ${inr(short)})</td><td></td><td></td><td></td><td class="down-t">−${inr(pen)}</td></tr>` : ""}
+        </tbody></table></div>
+      </div><div class="stack" style="gap:12px">
+        <div class="verdict ${score >= 70 ? "good" : score >= 45 ? "mid" : "bad"}"><b>What happened.</b> ${sc.lesson}</div>
+        <table class="t"><tbody><tr><td>Return vs best and worst single asset (60)</td><td>${retS.toFixed(0)}</td></tr><tr><td>Diversification (25)</td><td>${divS.toFixed(0)}</td></tr><tr><td>Liquidity planning (15)</td><td>${liqS.toFixed(0)}</td></tr><tr class="hl"><td>Total</td><td>${score}</td></tr></tbody></table>
+        <p class="small muted">Returns are invented for teaching, chosen to be directionally plausible for each scenario. They are not predictions and this is not investment advice.</p>
+        <div class="row"><button class="btn pri" id="pmAgain">Play another year</button>${shareBtn(`I scored ${score}/100 in FIC's Portfolio Manager (${sc.name}, return ${pct(R,1)})`)}</div>
+      </div></div>`;
+    $("#pmAgain").addEventListener("click", () => this.stage1());
+  }
+};
+
+/* ---------- 3. DECODE THE SCAM ---------- */
+const CASES = [
+  {id:"meridian",label:"Fictional case",title:"Meridian Agro Exports Ltd",intro:"A fast-growing, listed agri-commodity exporter. Its share price has tripled in two years. You are a junior analyst asked to check whether the growth is real. Every name and number here is invented.",
+   rounds:[
+    {ex:`<div class="scroll"><table class="t"><thead><tr><th>₹ crore</th><th>FY24</th><th>FY25</th><th>FY26</th></tr></thead><tbody><tr><td>Revenue</td><td>820</td><td>1,150</td><td>1,670</td></tr><tr><td>Net profit</td><td>62</td><td>94</td><td>141</td></tr><tr><td>Cash from operations</td><td>−18</td><td>−46</td><td>−95</td></tr><tr><td>Trade receivables</td><td>139</td><td>301</td><td>677</td></tr><tr><td>Receivable days</td><td>62</td><td>96</td><td>148</td></tr></tbody></table></div>`,
+     q:"Which is the strongest red flag in these numbers?",
+     o:[["Profit keeps rising while operating cash flow gets worse and receivable days more than double",true],["Revenue growth above 40% a year",false],["Net margin of about 8%",false],["Three years of data is too few to judge",false]],
+     lesson:"Profit that never becomes cash is the first thing to test. Receivables growing much faster than revenue can mean sales are booked that customers will never pay.",control:"Revenue recognition and credit controls",principle:"Compare net profit with cash from operations every year; a widening gap needs an explanation."},
+    {ex:`<div class="clue"><span class="lab">Exhibit B · Related-party note</span>Three distributors, all incorporated in FY25, account for 41% of FY26 sales. Two share a registered address with a firm owned by the promoter's cousin. None appears in the related-party disclosures.</div>`,
+     q:"What does Exhibit B most plausibly suggest?",
+     o:[["Sales routed through undisclosed related parties, possibly round-tripping or fictitious",true],["Healthy concentration with loyal new customers",false],["A tax-efficient distribution strategy",false],["Normal behaviour for an exporter",false]],
+     lesson:"New, concentrated customers linked to the promoter and missing from disclosures can be used to book sales that never leave the group.",control:"Related-party identification and disclosure",principle:"Map major customers and suppliers against promoter-linked entities; check addresses, directors and incorporation dates."},
+    {ex:`<div class="clue"><span class="lab">Exhibit C · Governance</span>The CFO resigned mid-year citing personal reasons. The statutory auditor was replaced by a small local firm one year before its term ended. The audit committee chair is a long-time friend of the promoter and the committee met twice in the year.</div>`,
+     q:"Which control failure matters most here?",
+     o:[["Weak auditor and audit-committee independence at the moment scrutiny was most needed",true],["Too few board meetings in general",false],["The CFO's resignation alone",false],["Using a local audit firm is itself fraud",false]],
+     lesson:"Each item alone could be innocent. Together, a departing CFO, an early auditor change and a captive audit committee remove the people best placed to challenge the numbers.",control:"Independent oversight",principle:"Treat clusters of governance changes, especially auditor and CFO exits, as escalation triggers."},
+    {ex:`<div class="clue"><span class="lab">Exhibit D · Shareholding</span>The promoter has pledged 78% of their holding to lenders, up from 20%. The pledge disclosure moved from the main shareholding table to a footnote.</div>`,
+     q:"Why does the pledge matter?",
+     o:[["A falling share price could trigger margin calls and forced selling, so the promoter has a strong incentive to prop up reported results",true],["Pledged shares cannot vote",false],["It shows lenders trust the company",false],["It has no effect on minority shareholders",false]],
+     lesson:"High pledging links the promoter's personal solvency to the share price, which is exactly the pressure in the fraud triangle.",control:"Disclosure quality",principle:"Track promoter pledge levels and how prominently they are disclosed."}
+   ],
+   final:{q:"Put it together. What is the most plausible explanation?",o:[["Revenue is inflated through undisclosed related-party sales, while a heavily pledged promoter needs the share price to hold",true],["A genuine growth company with temporary working-capital strain",false],["An accounting error by the new auditor",false],["A commodity price boom",false]],why:"Every exhibit points the same way: profits without cash, promoter-linked customers, weakened oversight and a strong personal motive. An analyst would flag the stock and ask for customer confirmations and a forensic review."}},
+  {id:"satyam",label:"Documented historical case",title:"Satyam Computer Services (2008–09)",intro:"Satyam was one of India's largest IT services companies. This case uses facts from the public record, mainly founder B. Ramalinga Raju's letter to the board on 7 January 2009 as widely reported. Questions ask what an analyst could have spotted.",
+   source:"Public record: Raju's letter of 7 Jan 2009 and subsequent regulatory and court proceedings.",
+   rounds:[
+    {ex:`<div class="clue"><span class="lab">Exhibit A · Balance sheet (Sept 2008)</span>Satyam reported cash and bank balances of about ₹5,361 crore, a very large sum for a services firm, while it did not use the cash for large buybacks or acquisitions. Raju's letter later stated that about ₹5,040 crore of it did not exist.</div>`,
+     q:"Before the confession, which analytical test could have raised doubts about the cash?",
+     o:[["Check whether interest income was consistent with such a large cash balance, and confirm deposits directly with banks",true],["Compare headcount growth with peers",false],["Check the dividend payout ratio",false],["Look at the share price trend",false]],
+     lesson:"Fictitious cash should show up as interest income that does not match the balance. The letter also admitted ₹376 crore of non-existent accrued interest.",control:"Independent bank confirmation by auditors",principle:"Cash is the easiest asset to verify, so it must be confirmed with the bank, never from documents supplied by management."},
+    {ex:`<div class="clue"><span class="lab">Exhibit B · December 2008</span>Satyam announced a plan to acquire Maytas Properties and Maytas Infra, companies linked to the founder's family and outside the IT business, for about $1.6 billion. After a strong investor backlash the plan was withdrawn within a day.</div>`,
+     q:"What red flag did the Maytas bid represent?",
+     o:[["A related-party deal outside the core business, which Raju's letter later described as an attempt to replace fictitious assets with real ones",true],["A normal diversification move",false],["Evidence that Satyam had too little cash",false],["A tax-planning strategy",false]],
+     lesson:"Large related-party acquisitions that make no strategic sense can be a way to move money or cover a hole.",control:"Board approval of related-party transactions",principle:"Independent directors must test the strategic logic and pricing of any promoter-linked deal."},
+    {ex:`<div class="clue"><span class="lab">Exhibit C · The confession</span>The letter said reported operating margins of about 24% compared with actual margins of about 3%, and that the gap had grown year after year until it could not be closed.</div>`,
+     q:"What does the gap between reported and real margins teach?",
+     o:[["Small, repeated overstatements compound: each year's fake profit has to be backed by a fake asset, usually cash or receivables",true],["Margins in IT services are always volatile",false],["The fraud was a one-time error",false],["Margins are not useful for analysis",false]],
+     lesson:"Inflated profits accumulate on the balance sheet. That is why the fake cash had grown so large by 2008.",control:"Analytical review over time",principle:"Compare a company's margins and cash conversion with close peers over several years, not just one."}
+   ],
+   final:{q:"Which explanation fits the documented facts?",o:[["Years of inflated revenue and profit, backed by fictitious cash and receivables, that a failed related-party deal tried to cover",true],["A sudden loss in one bad quarter",false],["Fraud by a single rogue employee",false],["A currency loss on dollar contracts",false]],why:"Raju's letter described a long-running inflation of results. The episode led to major reforms in Indian corporate governance and audit oversight."}}
+];
+const Scam = {
+  init(){ this.pick(); },
+  pick(){
+    $("#scam").innerHTML = gameHead("scam") + `<p class="muted" style="max-width:62ch;margin-bottom:18px">Work through the exhibits like a forensic analyst. One answer per round. After each one you get the lesson, the control that failed and the principle to remember.</p>
+      <div class="grid game-grid">${CASES.map(c => `<button class="card gcard" data-case="${c.id}"><span class="chip ${c.label.startsWith("Doc") ? "ever" : "gold"}">${c.label}</span><h4 style="font-family:var(--f-display);font-size:1.3rem;font-weight:500">${c.title}</h4><p>${c.intro.split(". ")[0]}.</p></button>`).join("")}</div>
+      <p class="small muted" style="margin-top:16px">More cases: the Corporate Chronicles archive has 18 Scandal Sheets, each a candidate for a new case.</p>`;
+    $$("#scam [data-case]").forEach(b => b.addEventListener("click", () => this.start(CASES.find(c => c.id === b.dataset.case))));
+  },
+  start(c){ this.c = c; this.i = 0; this.score = 0; this.round(); },
+  round(){
+    const c = this.c, final = this.i >= c.rounds.length, R = final ? null : c.rounds[this.i], N = c.rounds.length + 1;
+    const opts = shuffle((final ? c.final.o : R.o).map((o,i) => ({t:o[0], ok:o[1]})));
+    $("#scam").innerHTML = gameHead("scam", `<div class="row"><span class="chip ${c.label.startsWith("Doc") ? "ever" : "gold"}">${c.label}</span><span class="chip">Score ${this.score}</span></div>`) + `
+      <div class="progress"><i style="width:${this.i / N * 100}%"></i></div>
+      <div class="stack" style="gap:14px;margin-top:18px;max-width:820px">
+        <span class="eyebrow">${c.title} · ${final ? "Final call" : "Exhibit " + (this.i + 1) + " of " + c.rounds.length}</span>
+        ${this.i === 0 ? `<p class="muted">${c.intro}</p>` : ""}
+        ${final ? "" : R.ex}
+        <h3>${final ? c.final.q : R.q}</h3>
+        <div class="opts">${opts.map((o,j) => `<button class="opt" data-ok="${o.ok}"><span class="k">${"ABCD"[j]}</span><span>${esc(o.t)}</span></button>`).join("")}</div>
+        <div class="explain" id="scEx" hidden></div>
+        ${c.source ? `<p class="small muted">Source basis: ${c.source}</p>` : ""}
+      </div>`;
+    $$("#scam .opt").forEach(b => b.addEventListener("click", () => {
+      const ok = b.dataset.ok === "true"; if (ok) this.score += final ? 30 : 20;
+      $$("#scam .opt").forEach(x => { x.disabled = true; if (x.dataset.ok === "true") x.classList.add("right"); });
+      if (!ok) b.classList.add("wrong");
+      $("#scEx").hidden = false;
+      $("#scEx").innerHTML = final ? `<div class="verdict ${ok ? "good" : "bad"}"><b>${ok ? "Case cracked." : "Not quite."}</b> ${c.final.why}</div><div style="margin-top:12px"><button class="btn pri" id="scNext">See your case report</button></div>`
+        : `<p><b style="color:${ok ? "var(--up)" : "var(--down)"}">${ok ? "Correct." : "Not quite."}</b> ${R.lesson}</p><div class="calc-inputs" style="margin-top:10px"><div class="clue"><span class="lab">Control failure</span>${R.control}</div><div class="clue"><span class="lab">Principle</span>${R.principle}</div></div><div style="margin-top:12px"><button class="btn pri" id="scNext">Next exhibit</button></div>`;
+      $("#scNext").addEventListener("click", () => { this.i++; this.i > c.rounds.length ? this.report() : this.round(); }); $("#scNext").focus();
+    }));
+  },
+  report(){
+    const c = this.c, max = c.rounds.length * 20 + 30, p = Math.round(this.score / max * 100);
+    Store.add(this.score / 2, "scam", p); if (p >= 75) Store.badge("fraudHunter");
+    $("#scam").innerHTML = gameHead("scam") + `<div class="progress"><i style="width:100%"></i></div><div class="stack" style="gap:14px;margin-top:20px;max-width:760px">
+      <span class="eyebrow">Case report · ${c.title}</span><div style="font-family:var(--f-display);font-size:3.4rem;line-height:1">${this.score}<span class="muted" style="font-size:1.4rem"> / ${max}</span></div>
+      <p>${p >= 75 ? "Sharp forensic instincts. You read the exhibits together, which is how real frauds are found." : "Frauds hide in plain sight. Re-read the principles; most cases are caught by simple cross-checks between profit, cash and disclosures."}</p>
+      <div class="row"><button class="btn pri" id="scBack">Choose another case</button>${shareBtn(`I scored ${this.score}/${max} on "${c.title}" in FIC's Decode the Scam`)}<a class="btn ghost" href="${PUBS.cc.page}" target="_blank" rel="noopener">Read Corporate Chronicles</a></div></div>`;
+    $("#scBack").addEventListener("click", () => this.pick());
+  }
+};
+
+/* ---------- 5. VALUATION LAB ---------- */
+const VAL_IN = [
+  ["rev","Base-year revenue (₹ cr)",1000,1,1e7,10],["g1","Revenue growth, years 1–3 (%)",15,-50,100,.5],["g2","Revenue growth, years 4–5 (%)",9,-50,100,.5],["m","EBIT margin (%)",18,-50,80,.5],["tax","Tax rate (%)",25,0,60,.5],["da","D&A (% of revenue)",4,0,50,.5],["capex","Capex (% of revenue)",6,0,80,.5],["nwc","Working capital (% of incremental revenue)",10,-50,100,1],["wacc","WACC (%)",11,1,40,.1],["tg","Terminal growth (%)",5,-5,20,.1],["nd","Net debt (₹ cr; negative = net cash)",300,-1e6,1e6,10],["sh","Shares outstanding (crore)",50,.01,1e5,1],["mult","Peer EV/EBITDA multiple (×)",16,0,100,.5]
+];
+function dcf(v){
+  const yrs = []; let rev = v.rev, pv = 0;
+  for (let t = 1; t <= 5; t++) {
+    const g = (t <= 3 ? v.g1 : v.g2) / 100, nr = rev * (1 + g), ebit = nr * v.m / 100, nopat = ebit * (1 - v.tax / 100), da = nr * v.da / 100, cx = nr * v.capex / 100, dn = (nr - rev) * v.nwc / 100, f = nopat + da - cx - dn, df = 1 / Math.pow(1 + v.wacc / 100, t);
+    pv += f * df; yrs.push({t, rev:nr, ebit, nopat, da, cx, dn, f, df, pv:f * df}); rev = nr;
+  }
+  const W = v.wacc / 100, G = v.tg / 100, last = yrs[4];
+  const tv = W > G ? last.f * (1 + G) / (W - G) : NaN, pvtv = tv * last.df, ev = pv + pvtv, eq = ev - v.nd;
+  return {yrs, pv, tv, pvtv, ev, eq, ps:eq / v.sh, tvShare:pvtv / ev};
+}
+const Valuation = {
+  init(){
+    $("#valuation").innerHTML = gameHead("valuation", `<span class="chip">Fictional company · Aravali Consumer Ltd</span>`) + `
+      <p class="muted" style="max-width:70ch;margin-bottom:16px">Change any assumption and the model recalculates. Free cash flow to the firm (FCFF) = EBIT × (1 − tax) + D&A − capex − increase in working capital. Each year's FCFF is discounted at WACC, and a Gordon-growth terminal value captures everything after year 5.</p>
+      <div class="calc-inputs" id="vlIn">${VAL_IN.map(([id,l,d,mn,mx,st]) => `<label class="f" for="vl_${id}">${l}<input type="number" id="vl_${id}" value="${d}" min="${mn}" max="${mx}" step="${st}"></label>`).join("")}</div>
+      <div id="vlWarn" style="margin-top:14px"></div>
+      <div class="result" id="vlRes" style="margin-top:14px"></div>
+      <div class="two" style="margin-top:20px"><div class="stack"><h4>Projected free cash flow (₹ cr)</h4><div id="vlChart"></div></div><div class="stack"><h4>Sensitivity: value per share (₹)</h4><div class="scroll" id="vlSens"></div><p class="small muted">Rows: WACC. Columns: terminal growth. Highlighted cell = your base case.</p></div></div>
+      <h4 style="margin-top:22px">Cash flow build</h4><div class="scroll" id="vlTable" style="margin-top:8px"></div>
+      <div class="two" style="margin-top:22px"><div class="stack"><h4>Cross-check with comparable companies</h4><div id="vlComps"></div></div><div class="stack"><h4>Valuation summary</h4><div id="vlSum"></div></div></div>`;
+    let touched = false;
+    $("#vlIn").addEventListener("input", () => { this.calc(); if (!touched) { touched = true; Store.badge("valuer"); Store.add(5, null, null); } });
+    this.calc();
+  },
+  read(){ const v = {}, bad = []; VAL_IN.forEach(([id,l,d,mn,mx]) => { const el = $("#vl_" + id), x = parseFloat(el.value); const ok = isFinite(x) && x >= mn && x <= mx; el.setAttribute("aria-invalid", !ok); if (!ok) bad.push(`${l}: enter a number between ${mn} and ${mx}.`); v[id] = ok ? x : d; }); return {v, bad}; },
+  calc(){
+    const {v, bad} = this.read(), r = dcf(v), w = [];
+    if (v.wacc <= v.tg) w.push(["bad","WACC must be higher than terminal growth. With growth at or above the discount rate, the terminal value formula breaks down. Lower terminal growth or raise WACC."]);
+    else if (v.wacc - v.tg < 2) w.push(["mid",`WACC is only ${(v.wacc - v.tg).toFixed(1)} points above terminal growth, so small changes swing the value a lot.`]);
+    if (v.tg > 8) w.push(["mid","Terminal growth above 8% assumes the company grows faster than the economy forever. Most analysts cap it near long-run nominal GDP growth."]);
+    if (isFinite(r.tvShare) && r.tvShare > .85) w.push(["mid",`${Math.round(r.tvShare * 100)}% of value comes from the terminal value. The answer depends mostly on the long-run assumptions.`]);
+    if (r.yrs.some(y => y.f < 0)) w.push(["mid","Some years have negative free cash flow: capex and working capital are absorbing more cash than the business earns."]);
+    if (v.capex < v.da && v.g2 > 3) w.push(["mid","Capex below depreciation while still growing is hard to sustain. Growth usually needs net investment."]);
+    bad.forEach(b => w.unshift(["bad",b]));
+    $("#vlWarn").innerHTML = w.map(([k,t]) => `<div class="verdict ${k}" style="margin-bottom:8px;padding:10px 14px;font-size:.88rem">${t}</div>`).join("");
+    const okv = isFinite(r.ev);
+    $("#vlRes").innerHTML = [["PV of 5-year FCFF", okv ? fmt(r.pv,0) + " cr" : "—"],["PV of terminal value", okv ? fmt(r.pvtv,0) + " cr" : "—"],["Enterprise value", okv ? fmt(r.ev,0) + " cr" : "—"],["Equity value", okv ? fmt(r.eq,0) + " cr" : "—"],["Value per share", okv ? inr(r.ps,2) : "—"]].map(([k,x]) => `<div><div class="k">${k}</div><div class="v">${x}</div></div>`).join("");
+    const mx = Math.max(...r.yrs.map(y => Math.abs(y.f)), 1), H = 150, mid = r.yrs.some(y => y.f < 0) ? H / 2 : H - 18;
+    $("#vlChart").innerHTML = `<svg viewBox="0 0 360 ${H + 10}" width="100%" style="max-width:420px" role="img" aria-label="Free cash flow by year">
+      <line x1="20" x2="350" y1="${mid}" y2="${mid}" stroke="var(--line)"/>
+      ${r.yrs.map((y,i) => { const h = Math.abs(y.f) / mx * (mid - 22), x = 34 + i * 64; return `<rect x="${x}" y="${y.f >= 0 ? mid - h : mid}" width="40" height="${Math.max(h,1)}" fill="${y.f >= 0 ? "var(--ever-2)" : "var(--down)"}" rx="2"/><text x="${x + 20}" y="${y.f >= 0 ? mid - h - 5 : mid + h + 12}" text-anchor="middle" style="fill:var(--ink)">${fmt(y.f,0)}</text><text x="${x + 20}" y="${H + 6}" text-anchor="middle">Y${y.t}</text>`; }).join("")}</svg>`;
+    const ws = [-2,-1,0,1,2].map(d => +(v.wacc + d).toFixed(2)), gs = [-1,-.5,0,.5,1].map(d => +(v.tg + d).toFixed(2));
+    $("#vlSens").innerHTML = `<table class="t"><thead><tr><th>WACC \\ g</th>${gs.map(g => `<th>${g.toFixed(1)}%</th>`).join("")}</tr></thead><tbody>${ws.map(W => `<tr><td>${W.toFixed(1)}%</td>${gs.map(G => { const x = W > G ? dcf({...v, wacc:W, tg:G}).ps : NaN; return `<td class="${W === v.wacc && G === v.tg ? "hl" : ""}">${isFinite(x) ? fmt(x,0) : "n/a"}</td>`; }).join("")}</tr>`).join("")}</tbody></table>`;
+    $("#vlTable").innerHTML = `<table class="t"><thead><tr><th>₹ crore</th>${r.yrs.map(y => `<th>Y${y.t}</th>`).join("")}</tr></thead><tbody>
+      ${[["Revenue","rev"],["EBIT","ebit"],["NOPAT = EBIT × (1 − t)","nopat"],["+ D&A","da"],["− Capex","cx"],["− Increase in working capital","dn"],["= FCFF","f"],["Discount factor","df"],["PV of FCFF","pv"]].map(([l,k]) => `<tr ${k === "f" ? 'class="hl"' : ""}><td>${l}</td>${r.yrs.map(y => `<td>${k === "df" ? y[k].toFixed(3) : fmt(y[k],1)}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+    const ebitda0 = v.rev * (v.m + v.da) / 100, evC = ebitda0 * v.mult, psC = (evC - v.nd) / v.sh;
+    $("#vlComps").innerHTML = `<p class="small">Base-year EBITDA = revenue × (EBIT margin + D&A %) = <b class="num">${fmt(ebitda0,0)} cr</b>. At ${v.mult}× peer EV/EBITDA, implied EV is <b class="num">${fmt(evC,0)} cr</b> and value per share <b class="num">${inr(psC,2)}</b>.</p>` + (okv ? `<p class="small muted" style="margin-top:8px">DCF implies ${fmt(r.ev / ebitda0,1)}× base-year EBITDA. ${Math.abs(r.ev / evC - 1) < .15 ? "The two methods roughly agree." : r.ev > evC ? "The DCF is more optimistic than peers; check growth and margin assumptions." : "The DCF is more conservative than peers; the market may be pricing in higher growth."}</p>` : "");
+    $("#vlSum").innerHTML = okv ? `<p class="small">Using a ${v.wacc}% WACC and ${v.tg}% terminal growth, the DCF values Aravali at <b>${fmt(r.ev,0)} cr</b> (enterprise) and <b>${inr(r.ps,2)}</b> per share after ${v.nd >= 0 ? "subtracting" : "adding"} ${fmt(Math.abs(v.nd),0)} cr of net ${v.nd >= 0 ? "debt" : "cash"}. The terminal value is ${Math.round(r.tvShare * 100)}% of the total. Comparable multiples give ${inr(psC,2)} per share. A reasonable range is the spread between the two, with the sensitivity table showing how much each percentage point of WACC moves it.</p>` : `<p class="small err">Fix the WACC and growth inputs to see a valuation.</p>`;
+  }
+};
+
+/* ---------- 4. BULL VS BEAR ---------- */
+const BB = [
+  {t:"Results beat and guidance raised",ctx:["Quarterly profit 18% above consensus; full-year guidance raised.","Stock in a steady uptrend above its 200-day average.","Volume on the results day is 3× normal."],seed:3,d1:.0016,d2:.006,ans:"bull",why:"Positive earnings surprises with a guidance raise often see continued drift in the same direction, known as post-earnings announcement drift. Rising volume confirmed broad buying."},
+  {t:"Support breaks on heavy volume",ctx:["Price closes below a level that held three times in a year.","Two brokers downgrade the whole sector the same week.","Volume on the break is 2.5× normal."],seed:7,d1:-.0004,d2:-.007,ans:"bear",why:"A break of well-tested support on heavy volume, with negative news flow across the sector, signals sellers in control. Sector-wide downgrades remove the support of relative value."},
+  {t:"Surprise rate cut near the lows",ctx:["The central bank cuts rates unexpectedly as inflation falls.","The index has fallen 22% from its peak.","Valuations sit below their 10-year average."],seed:19,d1:-.0035,d2:.0065,ans:"bull",why:"Easing policy, cheap valuations and pessimistic positioning together often mark turning points. Lower rates raise the present value of future earnings."},
+  {t:"Parabolic rally, insiders selling",ctx:["Price up 140% in four months; P/E is three times the sector.","Promoters sold 6% of their stake last month.","Margin funding for the stock has doubled."],seed:23,d1:.0075,d2:-.009,ans:"bear",why:"Stretched valuations, insider selling and leveraged retail buying are classic late-stage signs. When momentum stalls, margin calls can turn a pause into a sharp fall."},
+  {t:"Auditor resigns over 'information gaps'",ctx:["The statutory auditor resigns, citing information not provided by management.","The company says the resignation is 'procedural'.","Promoter pledge rose sharply in the last quarter."],seed:31,d1:.0005,d2:-.011,ans:"bear",why:"An auditor resigning over withheld information is one of the strongest governance red flags. Combined with rising pledges, the risk of forced selling and restatement is high."}
+];
+function bbPath(seed, d1, d2){ let s = seed * 9973 + 1, p = 100; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647, g = () => { let u = 0; for (let i = 0; i < 6; i++) u += rnd(); return (u - 3) / Math.sqrt(.5); }; const a = [];
+  for (let i = 0; i < 80; i++) { p *= 1 + (i < 60 ? d1 : d2) + g() * .009; a.push(p); } return a; }
+const BullBear = {
+  init(){ this.order = shuffle(BB.map((_,i) => i)); this.i = 0; this.score = 0; this.show(); },
+  chart(path, reveal){
+    const W = 640, H = 240, lo = Math.min(...path) * .98, hi = Math.max(...path) * 1.02, X = i => 40 + i / 79 * (W - 60), Y = p => 14 + (hi - p) / (hi - lo) * (H - 40);
+    const seg = (a, b) => path.slice(a, b + 1).map((p,i) => `${X(a + i).toFixed(1)},${Y(p).toFixed(1)}`).join(" ");
+    const ticks = [0,1,2,3].map(k => lo + (hi - lo) * k / 3);
+    const up = path[79] >= path[59];
+    return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Simulated price chart">
+      ${ticks.map(t => `<line x1="40" x2="${W - 20}" y1="${Y(t)}" y2="${Y(t)}" stroke="var(--line)" stroke-dasharray="2 4"/><text x="34" y="${Y(t) + 4}" text-anchor="end">${t.toFixed(0)}</text>`).join("")}
+      <line x1="${X(59)}" x2="${X(59)}" y1="10" y2="${H - 24}" stroke="var(--gold)" stroke-dasharray="4 3"/><text x="${X(59)}" y="${H - 8}" text-anchor="middle">Today</text>
+      <polyline points="${seg(0,59)}" fill="none" stroke="var(--ink)" stroke-width="2"/>
+      ${reveal ? `<polyline points="${seg(59,79)}" fill="none" stroke="${up ? "var(--up)" : "var(--down)"}" stroke-width="2.5"/><circle cx="${X(79)}" cy="${Y(path[79])}" r="4" fill="${up ? "var(--up)" : "var(--down)"}"/>` : `<rect x="${X(59) + 4}" y="12" width="${X(79) - X(59) - 4}" height="${H - 38}" fill="var(--sunk)"/><text x="${(X(59) + X(79)) / 2}" y="${H / 2}" text-anchor="middle">?</text>`}
+      <text x="40" y="${H - 8}">60 sessions ago</text></svg>`;
+  },
+  show(){
+    if (this.i >= this.order.length) return this.end();
+    const s = BB[this.order[this.i]], path = bbPath(s.seed, s.d1, s.d2);
+    $("#bullbear").innerHTML = gameHead("bullbear", `<div class="row"><span class="chip warn">Simulated data</span><span class="chip">Round ${this.i + 1}/${BB.length} · Score ${this.score}</span></div>`) + `
+      <div class="two"><div class="stack" style="gap:10px"><h3>${s.t}</h3>${s.ctx.map(c => `<div class="clue">${c}</div>`).join("")}
+        <div class="row" style="margin-top:6px"><button class="btn pri" data-call="bull">Bullish ▲</button><button class="btn ghost" data-call="bear" style="border-color:var(--down);color:var(--down)">Bearish ▼</button></div><div id="bbEx"></div></div>
+      <div class="stack"><div id="bbChart">${this.chart(path, false)}</div><p class="small muted">Prices are generated by a simulation designed to illustrate the setup. They do not represent any real security.</p></div></div>`;
+    $$("#bullbear [data-call]").forEach(b => b.addEventListener("click", () => {
+      const ok = b.dataset.call === s.ans; if (ok) this.score += 20; $$("#bullbear [data-call]").forEach(x => x.disabled = true);
+      $("#bbChart").innerHTML = this.chart(path, true); const mv = path[79] / path[59] - 1;
+      $("#bbEx").innerHTML = `<div class="verdict ${ok ? "good" : "bad"}" style="margin-top:8px"><b>${ok ? "Good call." : "The simulation went the other way."}</b> Next 20 sessions: <span class="num">${pct(mv,1)}</span>. ${s.why} <span class="muted">Real markets do not always follow the setup; that is why position sizing matters.</span></div><button class="btn pri" id="bbNext" style="margin-top:10px">${this.i === BB.length - 1 ? "See score" : "Next chart"}</button>`;
+      $("#bbNext").addEventListener("click", () => { this.i++; this.show(); }); $("#bbNext").focus();
+    }));
+  },
+  end(){ Store.add(this.score / 2, "bullbear", this.score); if (this.score >= 80) Store.badge("chartist");
+    $("#bullbear").innerHTML = gameHead("bullbear") + `<div class="stack" style="gap:12px"><div style="font-family:var(--f-display);font-size:3.4rem;line-height:1">${this.score}<span class="muted" style="font-size:1.4rem"> / 100</span></div><p>${this.score >= 80 ? "You read context well." : "Context matters as much as the chart."} Each call combined price action with fundamentals or governance signals.</p><div class="row"><button class="btn pri" id="bbAgain">Play again</button>${shareBtn(`I scored ${this.score}/100 in FIC's Bull vs Bear`)}</div></div>`;
+    $("#bbAgain").addEventListener("click", () => this.init()); }
+};
+
+/* ---------- 6. CROSSWORD ---------- */
+const XW_WORDS = [
+  ["ARBITRAGE","Riskless profit from a price difference for the same asset in two markets"],["LIQUIDITY","How quickly an asset converts to cash without losing value"],["VALUATION","Estimating what a business or asset is worth"],["LEVERAGE","Using borrowed money to amplify returns"],["DURATION","A bond's price sensitivity to interest-rate changes, in years"],["DIVIDEND","Cash a company distributes to its shareholders"],["HEDGING","Taking an offsetting position to reduce risk"],["EQUITY","Ownership interest in a company"],["YIELD","Income return on an investment, as a percentage"],["BETA","Sensitivity of a stock's returns to the market"],["SWAP","Contract to exchange cash flows, such as fixed for floating"]
+];
+function xwLayout(words){
+  const grid = new Map(), key = (r,c) => r + "," + c, placed = [];
+  const at = (r,c) => grid.get(key(r,c));
+  const can = (w, r, c, dr, dc) => {
+    let hits = 0;
+    if (at(r - dr, c - dc) || at(r + dr * w.length, c + dc * w.length)) return -1;
+    for (let k = 0; k < w.length; k++) {
+      const rr = r + dr * k, cc = c + dc * k, cell = at(rr, cc);
+      if (cell) { if (cell.ch !== w[k] || cell.dirs.has(dr ? "d" : "a")) return -1; hits++; }
+      else if (at(rr + dc, cc + dr) || at(rr - dc, cc - dr)) return -1;
+    }
+    return hits;
+  };
+  const put = (w, clue, r, c, dr, dc) => { for (let k = 0; k < w.length; k++) { const kk = key(r + dr * k, c + dc * k); const cell = grid.get(kk) || {ch:w[k], dirs:new Set()}; cell.dirs.add(dr ? "d" : "a"); grid.set(kk, cell); } placed.push({w, clue, r, c, dir:dr ? "d" : "a"}); };
+  const sorted = words.slice().sort((a,b) => b[0].length - a[0].length);
+  put(sorted[0][0], sorted[0][1], 0, 0, 0, 1);
+  const skipped = [];
+  sorted.slice(1).forEach(([w, clue]) => {
+    let best = null;
+    grid.forEach((cell, k) => { const [r0,c0] = k.split(",").map(Number);
+      for (let i = 0; i < w.length; i++) if (w[i] === cell.ch) for (const [dr,dc] of [[0,1],[1,0]]) {
+        const r = r0 - dr * i, c = c0 - dc * i, h = can(w, r, c, dr, dc); if (h < 1) continue;
+        let rs = [], cs = []; grid.forEach((_, kk) => { const [a,b] = kk.split(",").map(Number); rs.push(a); cs.push(b); }); rs.push(r, r + dr * (w.length - 1)); cs.push(c, c + dc * (w.length - 1));
+        const area = (Math.max(...rs) - Math.min(...rs) + 1) * (Math.max(...cs) - Math.min(...cs) + 1), sc = h * 40 - area;
+        if (!best || sc > best.sc) best = {r, c, dr, dc, sc};
+      } });
+    if (best) put(w, clue, best.r, best.c, best.dr, best.dc); else skipped.push(w);
+  });
+  let r0 = Infinity, c0 = Infinity, r1 = -Infinity, c1 = -Infinity;
+  grid.forEach((_, k) => { const [a,b] = k.split(",").map(Number); r0 = Math.min(r0,a); c0 = Math.min(c0,b); r1 = Math.max(r1,a); c1 = Math.max(c1,b); });
+  placed.forEach(p => { p.r -= r0; p.c -= c0; });
+  const starts = [...new Set(placed.map(p => p.r * 1000 + p.c))].sort((a,b) => a - b);
+  placed.forEach(p => p.n = starts.indexOf(p.r * 1000 + p.c) + 1);
+  const cells = {}; grid.forEach((cell, k) => { const [a,b] = k.split(",").map(Number); cells[(a - r0) + "," + (b - c0)] = cell.ch; });
+  return {rows:r1 - r0 + 1, cols:c1 - c0 + 1, placed, cells, skipped};
+}
+const Crossword = {
+  init(){ this.L = xwLayout(XW_WORDS); this.hints = 0; this.done = false; this.render(); },
+  render(){
+    const L = this.L, nums = {}; L.placed.forEach(p => nums[p.r + "," + p.c] = p.n);
+    let g = ""; for (let r = 0; r < L.rows; r++) for (let c = 0; c < L.cols; c++) { const k = r + "," + c;
+      g += L.cells[k] ? `<div class="c">${nums[k] ? `<sup>${nums[k]}</sup>` : ""}<input maxlength="1" data-k="${k}" aria-label="Row ${r + 1} column ${c + 1}" autocomplete="off" autocapitalize="characters"></div>` : `<div class="c blk"></div>`; }
+    const list = d => L.placed.filter(p => p.dir === d).sort((a,b) => a.n - b.n).map(p => `<li data-w="${p.w}">${p.n}. ${p.clue} <span class="muted">(${p.w.length})</span></li>`).join("");
+    $("#crossword").innerHTML = gameHead("crossword", `<div class="statline"><div class="stat"><div class="k">Words</div><div class="v" id="xwProg">0/${L.placed.length}</div></div><div class="stat"><div class="k">Hints used</div><div class="v" id="xwHints">0</div></div></div>`) + `
+      <div class="xw-wrap"><div class="stack"><div class="xw-scroll"><div class="xw" style="grid-template-columns:repeat(${L.cols},auto)">${g}</div></div>
+        <div class="row"><button class="btn ghost sm" id="xwCheck">Check answers</button><button class="btn ghost sm" id="xwHint">Reveal a letter (−5)</button><button class="btn ghost sm" id="xwReset">Clear grid</button></div><div id="xwMsg"></div></div>
+      <div class="clues"><h4>Across</h4><ol>${list("a")}</ol><h4>Down</h4><ol>${list("d")}</ol><p class="small muted">Tap a clue to jump to its first square. Type to fill; the cursor moves along the word.</p></div></div>`;
+    this.dir = "a";
+    $$("#crossword .xw input").forEach(inp => {
+      inp.addEventListener("input", () => { inp.value = inp.value.replace(/[^a-z]/gi,"").toUpperCase(); inp.classList.remove("bad","ok"); if (inp.value) this.move(inp.dataset.k, 1); this.progress(); });
+      inp.addEventListener("keydown", e => { if (e.key === "Backspace" && !inp.value) { this.move(inp.dataset.k, -1); e.preventDefault(); }
+        const m = {ArrowRight:[0,1,"a"],ArrowLeft:[0,-1,"a"],ArrowDown:[1,0,"d"],ArrowUp:[-1,0,"d"]}[e.key];
+        if (m) { e.preventDefault(); this.dir = m[2]; const [r,c] = inp.dataset.k.split(",").map(Number); $(`#crossword input[data-k="${r + m[0]},${c + m[1]}"]`)?.focus(); } });
+      inp.addEventListener("focus", () => { const [r,c] = inp.dataset.k.split(",").map(Number), a = this.L.cells[r + "," + (c + 1)] || this.L.cells[r + "," + (c - 1)], d = this.L.cells[(r + 1) + "," + c] || this.L.cells[(r - 1) + "," + c]; if (this.dir === "a" && !a && d) this.dir = "d"; if (this.dir === "d" && !d && a) this.dir = "a"; inp.select(); });
+    });
+    $$("#crossword .clues li").forEach(li => li.addEventListener("click", () => { const p = this.L.placed.find(x => x.w === li.dataset.w); this.dir = p.dir; $(`#crossword input[data-k="${p.r},${p.c}"]`).focus(); }));
+    $("#xwCheck").addEventListener("click", () => this.check());
+    $("#xwHint").addEventListener("click", () => this.hint());
+    $("#xwReset").addEventListener("click", () => { $$("#crossword .xw input").forEach(i => { i.value = ""; i.className = ""; }); this.progress(); });
+  },
+  move(k, step){ const [r,c] = k.split(",").map(Number), [dr,dc] = this.dir === "a" ? [0,step] : [step,0]; $(`#crossword input[data-k="${r + dr},${c + dc}"]`)?.focus(); },
+  val(k){ return $(`#crossword input[data-k="${k}"]`).value; },
+  solvedWords(){ return this.L.placed.filter(p => [...p.w].every((ch,i) => this.val(p.dir === "a" ? `${p.r},${p.c + i}` : `${p.r + i},${p.c}`) === ch)); },
+  progress(){
+    const s = this.solvedWords(), N = this.L.placed.length; $("#xwProg").textContent = `${s.length}/${N}`;
+    $$("#crossword .clues li").forEach(li => li.classList.toggle("done", s.some(p => p.w === li.dataset.w)));
+    if (s.length === N && !this.done) { this.done = true; const score = Math.max(0, 100 - this.hints * 5); Store.add(score / 2, "crossword", score); Store.badge("wordsmith");
+      $("#xwMsg").innerHTML = `<div class="verdict good"><b>Grid complete.</b> Score ${score}/100 (${this.hints} hints). ${shareBtn(`I completed FIC's Financial Markets Crossword with ${score}/100`)}</div>`; }
+  },
+  check(){ let wrong = 0, blank = 0; $$("#crossword .xw input").forEach(i => { if (!i.value) { blank++; return; } const ok = i.value === this.L.cells[i.dataset.k]; i.classList.toggle("ok", ok); i.classList.toggle("bad", !ok); if (!ok) wrong++; });
+    if (!this.done) $("#xwMsg").innerHTML = `<p class="small">${wrong ? `${wrong} square${wrong > 1 ? "s are" : " is"} wrong (marked red).` : "Everything filled so far is correct."} ${blank} empty.</p>`; },
+  hint(){ const empt = $$("#crossword .xw input").filter(i => i.value !== this.L.cells[i.dataset.k]); if (!empt.length) return;
+    const i = empt[Math.floor(Math.random() * empt.length)]; i.value = this.L.cells[i.dataset.k]; i.classList.add("hint"); i.classList.remove("bad"); this.hints++; $("#xwHints").textContent = this.hints; this.progress(); }
+};
+
+/* ---------- 7. DEAL ROOM ---------- */
+const DEAL = {acqEbitda:900, acqNI:450, acqSh:100, acqPx:180, acqNetDebt:1200, acqCash:800, tgtEbitda:240, tgtNI:120, tgtNetDebt:200, tgtStandaloneEq:2800, synPV:600, integ:150, synY1:30, kd:.09, tax:.25, cashYield:.06, cov:3.0};
+const DEAL_RISKS = [
+  ["Customer concentration: one retail chain is 35% of sales",true],["Founder runs procurement and has no successor",true],["Synergy target assumes closing 4 of 6 plants",true],["Inventory includes ₹40 cr of slow-moving stock",true],["The acquirer's share price may rise on announcement",false],["The target's logo needs a redesign",false]
+];
+const Deal = {
+  init(){
+    const D = DEAL;
+    $("#deal").innerHTML = gameHead("deal", `<span class="chip">Fictional companies</span>`) + `
+      <div class="two"><div class="stack" style="gap:12px">
+        <p class="muted">You are the CFO of <b style="color:var(--ink)">Northfield Foods Ltd</b> (listed). The founders of <b style="color:var(--ink)">Kettleworks Snacks Pvt Ltd</b> want to sell. Decide whether to buy, at what price, and how to pay.</p>
+        <div class="scroll"><table class="t"><thead><tr><th>₹ crore</th><th>Northfield</th><th>Kettleworks</th></tr></thead><tbody>
+          <tr><td>EBITDA</td><td>${D.acqEbitda}</td><td>${D.tgtEbitda}</td></tr><tr><td>Net income</td><td>${D.acqNI}</td><td>${D.tgtNI}</td></tr><tr><td>Net debt</td><td>${fmt(D.acqNetDebt,0)}</td><td>${D.tgtNetDebt} (you assume it)</td></tr>
+          <tr><td>Shares (crore) · price</td><td>${D.acqSh} · ₹${D.acqPx}</td><td>Private</td></tr><tr><td>Cash available for the deal</td><td>${D.acqCash}</td><td>—</td></tr><tr><td>Standalone equity value (DCF)</td><td>—</td><td>${fmt(D.tgtStandaloneEq,0)}</td></tr></tbody></table></div>
+        <div class="clue"><span class="lab">Deal file</span>Cost synergies of ₹60 cr a year at full run-rate (half in year 1); present value of synergies ₹${D.synPV} cr. One-time integration cost ₹${D.integ} cr. Comparable deals: 12–15× EBITDA. New debt costs 9% pre-tax. Lenders' covenant: net debt / EBITDA ≤ ${D.cov}×. Tax rate 25%.</div>
+      </div><div class="stack" style="gap:14px">
+        <fieldset class="card pad stack" style="gap:8px;margin:0"><legend class="eyebrow">1 · Decision</legend><label class="check"><input type="radio" name="dlGo" value="yes" checked> Make an offer</label><label class="check"><input type="radio" name="dlGo" value="no"> Walk away</label></fieldset>
+        <div class="card pad stack" style="gap:8px"><span class="eyebrow">2 · Offer for 100% of equity</span><input type="range" id="dlPx" min="2200" max="4400" step="50" value="3200"><div class="row" style="justify-content:space-between"><b class="num" id="dlPxV"></b><span class="small muted" id="dlMult"></span></div></div>
+        <div class="card pad stack" style="gap:8px"><span class="eyebrow">3 · Financing mix</span>
+          <div class="slider-row"><label for="dlCash">Cash</label><input type="range" id="dlCash" min="0" max="100" step="5" value="20"><span class="num" id="dlCashV"></span></div>
+          <div class="slider-row"><label for="dlDebt">New debt</label><input type="range" id="dlDebt" min="0" max="100" step="5" value="50"><span class="num" id="dlDebtV"></span></div>
+          <div class="slider-row"><label for="dlStock">Shares</label><span class="small muted">Remainder</span><span class="num" id="dlStockV"></span></div><p class="err" id="dlErr"></p></div>
+        <fieldset class="card pad stack" style="gap:6px;margin:0"><legend class="eyebrow">4 · Due diligence: pick the risks to investigate</legend>${DEAL_RISKS.map((r,i) => `<label class="check"><input type="checkbox" data-r="${i}"> ${r[0]}</label>`).join("")}</fieldset>
+        <button class="btn pri" id="dlGoBtn">Submit to the board</button>
+      </div></div><div id="dlOut" style="margin-top:20px"></div>`;
+    ["dlPx","dlCash","dlDebt"].forEach(id => $("#" + id).addEventListener("input", () => this.live())); $$('#deal input[name="dlGo"]').forEach(r => r.addEventListener("change", () => this.live()));
+    $("#dlGoBtn").addEventListener("click", () => this.verdict()); this.live();
+  },
+  mix(){ const P = +$("#dlPx").value, c = +$("#dlCash").value, d = +$("#dlDebt").value, s = 100 - c - d; return {P, c, d, s, cashAmt:P * c / 100, debtAmt:P * d / 100, stockAmt:P * Math.max(s,0) / 100}; },
+  live(){
+    const m = this.mix(), D = DEAL; $("#dlPxV").textContent = inr(m.P) + " cr";
+    $("#dlMult").textContent = `${((m.P + D.tgtNetDebt) / D.tgtEbitda).toFixed(1)}× EBITDA incl. assumed debt`;
+    $("#dlCashV").textContent = `${m.c}% · ${fmt(m.cashAmt,0)}`; $("#dlDebtV").textContent = `${m.d}% · ${fmt(m.debtAmt,0)}`; $("#dlStockV").textContent = `${Math.max(m.s,0)}% · ${fmt(m.stockAmt,0)}`;
+    const errs = []; if (m.s < 0) errs.push(`Cash and debt add to ${m.c + m.d}%. Bring them to 100% or less.`); if (m.cashAmt > D.acqCash) errs.push(`Only ₹${D.acqCash} cr of cash is available; you are using ₹${fmt(m.cashAmt,0)} cr.`);
+    $("#dlErr").textContent = errs.join(" "); const go = $('#deal input[name="dlGo"]:checked').value === "yes"; $("#dlGoBtn").disabled = go && errs.length > 0;
+    ["dlPx","dlCash","dlDebt"].forEach(id => $("#" + id).disabled = !go);
+  },
+  verdict(){
+    const D = DEAL, go = $('#deal input[name="dlGo"]:checked').value === "yes", picks = $$("#deal [data-r]").map(x => x.checked);
+    const rightRisks = DEAL_RISKS.filter((r,i) => r[1] && picks[i]).length, wrongRisks = DEAL_RISKS.filter((r,i) => !r[1] && picks[i]).length, riskScore = clamp(rightRisks * 5 - wrongRisks * 5, 0, 20);
+    const ceiling = D.tgtStandaloneEq + D.synPV - D.integ;
+    if (!go) { const sc = 45 + riskScore; Store.add(sc / 2, "deal", sc);
+      $("#dlOut").innerHTML = `<div class="verdict mid"><b>You walked away.</b> Kettleworks is worth ₹${fmt(D.tgtStandaloneEq,0)} cr on its own and up to ₹${fmt(ceiling,0)} cr to you including synergies, net of integration costs. Any price below that creates value, so walking away is right only if the sellers will not accept less than ₹${fmt(ceiling,0)} cr. Score ${sc}/100.</div>`; return; }
+    const m = this.mix(), created = ceiling - m.P, newShares = m.stockAmt / D.acqPx;
+    const nd = D.acqNetDebt + m.debtAmt + m.cashAmt + D.tgtNetDebt, lev = nd / (D.acqEbitda + D.tgtEbitda);
+    const ni = D.acqNI + D.tgtNI + D.synY1 * (1 - D.tax) - m.debtAmt * D.kd * (1 - D.tax) - m.cashAmt * D.cashYield * (1 - D.tax);
+    const eps0 = D.acqNI / D.acqSh, eps1 = ni / (D.acqSh + newShares), acc = eps1 / eps0 - 1;
+    const valS = clamp(40 * (created / 600 + .5), 0, 40), levS = lev <= D.cov ? 25 : lev <= D.cov + .5 ? 10 : 0, epsS = acc >= 0 ? 15 : acc > -.03 ? 8 : 0, score = Math.round(valS + levS + epsS + riskScore);
+    Store.add(score / 2, "deal", score); if (score >= 70) Store.badge("dealmaker");
+    const tone = score >= 70 ? "good" : score >= 45 ? "mid" : "bad";
+    $("#dlOut").innerHTML = `<div class="two"><div class="stack" style="gap:12px">
+      <div class="verdict ${tone}"><b>Board verdict: ${score >= 70 ? "Approved" : score >= 45 ? "Approved with conditions" : "Rejected"}.</b> ${created >= 0 ? `Paying ₹${fmt(m.P,0)} cr leaves ₹${fmt(created,0)} cr of the synergy value with Northfield's shareholders.` : `Paying ₹${fmt(m.P,0)} cr hands the sellers more than the whole synergy value, destroying ₹${fmt(-created,0)} cr for Northfield's shareholders.`} ${lev > D.cov ? `Pro forma leverage of ${lev.toFixed(2)}× breaches the ${D.cov}× covenant; lenders would refuse or reprice.` : `Leverage of ${lev.toFixed(2)}× stays within the covenant.`} ${acc >= 0 ? "The deal is EPS-accretive in year 1." : `Year-1 EPS falls ${pct(-acc,1)}, which the market may punish even if the deal creates long-term value.`}</div>
+      <div class="row">${shareBtn(`My Deal Room verdict: ${score}/100 at ₹${fmt(m.P,0)} cr`)}<button class="btn ghost sm" onclick="document.getElementById('deal').scrollIntoView({behavior:'smooth'})">Try a different structure</button></div></div>
+      <div class="scroll"><table class="t"><tbody>
+        <tr><td>Max value-creating price (standalone + synergies − integration)</td><td>${fmt(ceiling,0)} cr</td></tr><tr><td>Value created for Northfield</td><td class="${created >= 0 ? "up-t" : "down-t"}">${fmt(created,0)} cr</td></tr>
+        <tr><td>Pro forma net debt / EBITDA</td><td class="${lev <= D.cov ? "up-t" : "down-t"}">${lev.toFixed(2)}×</td></tr><tr><td>New shares issued (crore)</td><td>${newShares.toFixed(2)}</td></tr>
+        <tr><td>EPS before → after (year 1, ₹)</td><td>${eps0.toFixed(2)} → ${eps1.toFixed(2)}</td></tr><tr><td>Risks: correct picks / irrelevant picks</td><td>${rightRisks} / ${wrongRisks}</td></tr>
+        <tr class="hl"><td>Score (value 40 · leverage 25 · EPS 15 · diligence 20)</td><td>${score}</td></tr></tbody></table>
+      <p class="small muted" style="margin-top:8px">Year-1 EPS includes half-run-rate synergies, after-tax interest on new debt and lost interest on cash used. Integration cost is treated as a one-off and excluded.</p></div></div>`;
+  }
+};
+/* ================= FINANCE TOOLKIT ================= */
+function bondPrice(F, c, y, n, f){ const C = F * c / f, i = y / f, N = Math.round(n * f); if (i === 0) return C * N + F; return C * (1 - Math.pow(1 + i, -N)) / i + F * Math.pow(1 + i, -N); }
+function bondYTM(P, F, c, n, f){ let lo = -0.5, hi = 1; if (bondPrice(F,c,hi,n,f) > P || bondPrice(F,c,lo,n,f) < P) return NaN; for (let k = 0; k < 200; k++) { const mid = (lo + hi) / 2; bondPrice(F,c,mid,n,f) > P ? lo = mid : hi = mid; } return (lo + hi) / 2; }
+const TOOLS = [
+  {id:"ci",name:"Compound Interest",in:[["P","Principal (₹)",100000,0],["r","Annual rate (%)",8,-50],["t","Years",10,0],["n","Compounding per year",4,1]],
+   f:v => { if (v.n < 1 || !Number.isInteger(v.n)) return {err:"Compounding frequency must be a whole number of 1 or more (1 = yearly, 4 = quarterly, 12 = monthly)."}; const A = v.P * Math.pow(1 + v.r / 100 / v.n, v.n * v.t); return {out:[["Future value",inr(A)],["Interest earned",inr(A - v.P)],["Effective annual rate",pct(Math.pow(1 + v.r / 100 / v.n, v.n) - 1)]], say:`₹${fmt(v.P,0)} grows to ${inr(A)} in ${v.t} years. More frequent compounding raises the effective rate slightly above ${v.r}%.`}; },
+   formula:"A = P × (1 + r/n)^(n × t)\nEffective annual rate = (1 + r/n)^n − 1"},
+  {id:"sip",name:"SIP Returns",in:[["P","Monthly investment (₹)",10000,0],["r","Expected annual return (%)",12,-50],["t","Years",15,0]],
+   f:v => { const i = v.r / 100 / 12, N = Math.round(v.t * 12), FV = i === 0 ? v.P * N : v.P * ((Math.pow(1 + i, N) - 1) / i) * (1 + i), inv = v.P * N; return {out:[["Future value",inr(FV)],["Amount invested",inr(inv)],["Estimated gains",inr(FV - inv)]], say:`Investing ${inr(v.P)} every month for ${v.t} years at an assumed ${v.r}% a year could grow to about ${inr(FV)}. Market returns vary year to year, so treat this as one scenario.`}; },
+   formula:"FV = P × [((1 + i)^N − 1) ÷ i] × (1 + i)\ni = annual rate ÷ 12, N = months (payments at the start of each month)"},
+  {id:"emi",name:"Loan EMI",in:[["P","Loan amount (₹)",2000000,0],["r","Annual interest rate (%)",9,0],["t","Tenure (years)",10,0]],
+   f:v => { const N = Math.round(v.t * 12); if (N < 1) return {err:"Tenure must be at least one month."}; const i = v.r / 100 / 12, E = i === 0 ? v.P / N : v.P * i * Math.pow(1 + i, N) / (Math.pow(1 + i, N) - 1); return {out:[["Monthly EMI",inr(E)],["Total interest",inr(E * N - v.P)],["Total paid",inr(E * N)]], say:`You would pay ${inr(E)} a month for ${N} months. Interest is ${pct((E * N - v.P) / (v.P || 1),1)} of the amount borrowed.`}; },
+   formula:"EMI = P × i × (1 + i)^N ÷ ((1 + i)^N − 1)\ni = annual rate ÷ 12, N = months"},
+  {id:"cagr",name:"CAGR",in:[["B","Beginning value",50000,0],["E","Ending value",120000,0],["t","Years",6,0]],
+   f:v => { if (v.B <= 0 || v.E <= 0) return {err:"Both values must be above zero. CAGR is undefined when a value is zero or negative."}; if (v.t <= 0) return {err:"Years must be above zero."}; const g = Math.pow(v.E / v.B, 1 / v.t) - 1; return {out:[["CAGR",pct(g)],["Total growth",pct(v.E / v.B - 1,1)]], say:`Growing at a steady ${pct(g)} a year turns ${fmt(v.B,0)} into ${fmt(v.E,0)} in ${v.t} years. CAGR smooths out the actual ups and downs.`}; },
+   formula:"CAGR = (Ending ÷ Beginning)^(1 ÷ years) − 1"},
+  {id:"capm",name:"CAPM / Cost of Equity",in:[["rf","Risk-free rate (%)",6.5,-10],["b","Beta",1.1,-5],["rm","Expected market return (%)",12.5,-50]],
+   f:v => { const k = v.rf + v.b * (v.rm - v.rf); return {out:[["Cost of equity",k.toFixed(2) + "%"],["Market risk premium",(v.rm - v.rf).toFixed(2) + "%"]], say:`Investors would require about ${k.toFixed(2)}% a year to hold this stock: ${v.rf}% for time plus ${(v.b * (v.rm - v.rf)).toFixed(2)}% for its market risk.${v.b < 0 ? " A negative beta means the stock tends to move against the market." : ""}`}; },
+   formula:"Ke = Rf + β × (Rm − Rf)"},
+  {id:"wacc",name:"WACC",in:[["E","Market value of equity (₹ cr)",6000,0],["D","Market value of debt (₹ cr)",2000,0],["ke","Cost of equity (%)",14,-20],["kd","Pre-tax cost of debt (%)",9,0],["t","Tax rate (%)",25,0]],
+   f:v => { const V = v.E + v.D; if (V <= 0) return {err:"Equity plus debt must be above zero."}; if (v.t > 100) return {err:"Tax rate cannot exceed 100%."}; const w = v.E / V * v.ke + v.D / V * v.kd * (1 - v.t / 100); return {out:[["WACC",w.toFixed(2) + "%"],["Equity weight",pct(v.E / V,1)],["After-tax cost of debt",(v.kd * (1 - v.t / 100)).toFixed(2) + "%"]], say:`Projects need to earn at least ${w.toFixed(2)}% to satisfy both shareholders and lenders. Debt is cheaper after tax because interest is deductible.`}; },
+   formula:"WACC = E/V × Ke + D/V × Kd × (1 − t)\nV = E + D"},
+  {id:"bond",name:"Bond Price & Yield",in:[["F","Face value (₹)",1000,0],["c","Coupon rate (%)",7.5,0],["n","Years to maturity",5,0],["f","Coupons per year",2,1],["y","Yield to maturity (%)",8,-5],["P","Market price, to solve for YTM (₹)",980,0]],
+   f:v => { if (!Number.isInteger(v.f) || v.f < 1) return {err:"Coupons per year must be a whole number (1, 2 or 4)."}; if (v.n <= 0) return {err:"Years to maturity must be above zero."};
+     const P = bondPrice(v.F, v.c / 100, v.y / 100, v.n, v.f), ytm = v.P > 0 ? bondYTM(v.P, v.F, v.c / 100, v.n, v.f) : NaN;
+     const N = Math.round(v.n * v.f), i = v.y / 100 / v.f, C = v.F * v.c / 100 / v.f; let mac = 0; for (let k = 1; k <= N; k++) mac += (k / v.f) * (k === N ? C + v.F : C) / Math.pow(1 + i, k); mac /= P; const mod = mac / (1 + i);
+     return {out:[["Price at your YTM",inr(P,2)],["YTM at market price",isFinite(ytm) ? (ytm * 100).toFixed(3) + "%" : "n/a"],["Macaulay duration",mac.toFixed(2) + " yrs"],["Modified duration",mod.toFixed(2)]], say:`At ${v.y}% yield the bond is worth ${inr(P,2)}, ${P > v.F ? "a premium because the coupon is above the yield" : P < v.F ? "a discount because the coupon is below the yield" : "par"}. A 1-point rise in yields would cut the price by roughly ${mod.toFixed(1)}%.`}; },
+   formula:"Price = Σ C ÷ (1 + i)^k + F ÷ (1 + i)^N\nC = F × coupon ÷ f, i = YTM ÷ f, N = years × f\nYTM solved by bisection; Modified duration = Macaulay ÷ (1 + i)"},
+  {id:"ratio",name:"Financial Ratios",in:[["ca","Current assets",500,0],["cl","Current liabilities",320,0],["td","Total debt",600,0],["eq","Shareholders' equity",900,0],["rev","Revenue",2400,0],["ni","Net income",180,-1e9],["ebit","EBIT",290,-1e9],["int","Interest expense",55,0]],
+   f:v => { const d = (a,b,s = "×",k = 2) => b ? (s === "%" ? pct(a / b,1) : (a / b).toFixed(k) + s) : "n/a";
+     return {out:[["Current ratio",d(v.ca,v.cl)],["Debt / equity",d(v.td,v.eq)],["ROE",d(v.ni,v.eq,"%")],["Net margin",d(v.ni,v.rev,"%")],["Interest coverage",d(v.ebit,v.int)]], say:`${v.cl && v.ca / v.cl < 1 ? "Current liabilities exceed current assets, so short-term liquidity is tight." : "Short-term assets cover short-term liabilities."} ${v.int && v.ebit / v.int < 2 ? "Interest coverage below 2× is a warning sign for lenders." : "Interest is comfortably covered by operating profit."} Ratios mean most when compared with peers and with the company's own history.`}; },
+   formula:"Current ratio = CA ÷ CL      Debt/Equity = Debt ÷ Equity\nROE = Net income ÷ Equity    Net margin = Net income ÷ Revenue\nInterest coverage = EBIT ÷ Interest"},
+  {id:"be",name:"Break-even",in:[["F","Fixed costs (₹)",500000,0],["p","Price per unit (₹)",250,0],["vc","Variable cost per unit (₹)",150,0],["tp","Target profit (₹)",200000,0]],
+   f:v => { const cm = v.p - v.vc; if (cm <= 0) return {err:"Price must be higher than variable cost per unit. Otherwise every unit sold loses money and there is no break-even point."}; const be = v.F / cm; return {out:[["Break-even units",fmt(Math.ceil(be),0)],["Break-even revenue",inr(be * v.p)],["Units for target profit",fmt(Math.ceil((v.F + v.tp) / cm),0)],["Contribution margin",pct(cm / v.p,1)]], say:`Each unit contributes ${inr(cm)} towards fixed costs. You need to sell ${fmt(Math.ceil(be),0)} units to cover ${inr(v.F)} of fixed costs.`}; },
+   formula:"Break-even units = Fixed costs ÷ (Price − Variable cost)\nUnits for target = (Fixed costs + Target profit) ÷ (Price − Variable cost)"},
+  {id:"dcf",name:"DCF (quick)",in:[["fcf","Free cash flow next year (₹ cr)",100,-1e9],["g","Growth, years 2–N (%)",10,-50],["N","Explicit forecast years",5,1],["r","Discount rate (%)",11,0],["tg","Terminal growth (%)",5,-5]],
+   f:v => { if (!Number.isInteger(v.N) || v.N < 1 || v.N > 30) return {err:"Forecast years must be a whole number from 1 to 30."}; if (v.r <= v.tg) return {err:"Discount rate must be above terminal growth, or the terminal value is undefined."};
+     let pv = 0, cf = v.fcf; for (let t = 1; t <= v.N; t++) { if (t > 1) cf *= 1 + v.g / 100; pv += cf / Math.pow(1 + v.r / 100, t); }
+     const tv = cf * (1 + v.tg / 100) / (v.r / 100 - v.tg / 100), pvtv = tv / Math.pow(1 + v.r / 100, v.N);
+     return {out:[["PV of forecast cash flows",fmt(pv,1) + " cr"],["PV of terminal value",fmt(pvtv,1) + " cr"],["Enterprise value",fmt(pv + pvtv,1) + " cr"],["Terminal share of value",pct(pvtv / (pv + pvtv),0)]], say:`The business is worth about ₹${fmt(pv + pvtv,0)} cr today on these assumptions. For a fuller model with margins, capex and sensitivity tables, use the Valuation Lab in the Arena.`}; },
+   formula:"EV = Σ FCF_t ÷ (1 + r)^t + TV ÷ (1 + r)^N\nTV = FCF_N × (1 + g_T) ÷ (r − g_T)"}
+];
+function selectTool(id){
+  const T = TOOLS.find(t => t.id === id) || TOOLS[0];
+  $$("#tkList button").forEach(b => b.setAttribute("aria-selected", b.dataset.id === T.id));
+  $("#tkBody").innerHTML = `<div class="stack" style="gap:4px"><span class="eyebrow">Calculator</span><h2>${T.name}</h2></div>
+    <form class="calc-inputs" id="tkForm" novalidate>${T.in.map(([k,l,d,mn]) => `<label class="f" for="tk_${T.id}_${k}">${l}<input type="number" step="any" id="tk_${T.id}_${k}" data-k="${k}" data-min="${mn}" value="${d}"></label>`).join("")}</form>
+    <div id="tkErr"></div><div class="result" id="tkRes"></div><p id="tkSay"></p>
+    <div class="stack" style="gap:6px"><span class="eyebrow">Formula used</span><div class="formula">${esc(T.formula)}</div></div>
+    <p class="small muted">Educational estimate based only on your inputs. Not financial advice or a guaranteed outcome.</p>`;
+  const run = () => {
+    const v = {}, bad = [];
+    $$("#tkForm input").forEach(i => { const x = parseFloat(i.value), mn = parseFloat(i.dataset.min); const ok = i.value.trim() !== "" && isFinite(x) && x >= mn; i.setAttribute("aria-invalid", !ok); if (!ok) bad.push(`${i.parentElement.firstChild.textContent.trim()}: enter a number${isFinite(mn) ? " of at least " + mn : ""}.`); v[i.dataset.k] = x; });
+    if (bad.length) { $("#tkErr").innerHTML = `<div class="verdict bad" style="font-size:.88rem;padding:10px 14px">${bad.join("<br>")}</div>`; $("#tkRes").hidden = true; $("#tkSay").textContent = ""; return; }
+    const r = T.f(v);
+    if (r.err) { $("#tkErr").innerHTML = `<div class="verdict bad" style="font-size:.88rem;padding:10px 14px">${r.err}</div>`; $("#tkRes").hidden = true; $("#tkSay").textContent = ""; return; }
+    $("#tkErr").innerHTML = ""; $("#tkRes").hidden = false;
+    $("#tkRes").innerHTML = r.out.map(([k,x]) => `<div><div class="k">${k}</div><div class="v">${x}</div></div>`).join(""); $("#tkSay").textContent = r.say;
+  };
+  $("#tkForm").addEventListener("input", run); $("#tkForm").addEventListener("submit", e => e.preventDefault()); run();
+}
+
+/* ================= BOOT ================= */
+$("#tkList").innerHTML = TOOLS.map(t => `<button role="tab" data-id="${t.id}">${t.name}</button>`).join("");
+$("#tkList").addEventListener("click", e => { const b = e.target.closest("button"); if (b) selectTool(b.dataset.id); });
+/* Embed mode for Wix: ?embed=quiz | portfolio | scam | valuation | bullbear | crossword | deal | toolkit | arena | publications | events
+   Hides this file's own header, footer and menus so a Wix page can frame a single module. No parameter = the full website. */
+const EMBED = (() => { try { return new URLSearchParams(location.search).get("embed"); } catch(e){ return null; } })();
+if (EMBED && (GAMES.includes(EMBED) || VIEWS.includes(EMBED))) {
+  document.body.classList.add("embed"); if (GAMES.includes(EMBED)) document.body.classList.add("embed-game");
+  if (location.hash.slice(1) !== EMBED) history.replaceState(null, "", "#" + EMBED);
+}
+/* Quiz questions can be supplied by the Wix page (Velo postMessage, see guide). Bad rows are ignored. */
+window.addEventListener("message", e => {
+  const d = e.data; if (!d || d.type !== "fic-quiz" || !Array.isArray(d.questions)) return;
+  const ok = d.questions.filter(q => q && typeof q.q === "string" && q.q.trim() && Array.isArray(q.o) && q.o.length === 4 && q.o.every(x => typeof x === "string" && x.trim()) && Number.isInteger(q.a) && q.a >= 0 && q.a <= 3 && typeof q.c === "string" && ["Easy","Medium","Hard"].includes(q.d))
+    .map(q => ({c:q.c.trim(), d:q.d, q:q.q.trim(), o:q.o.map(x => x.trim()), a:q.a, e:typeof q.e === "string" ? q.e : ""}));
+  if (!ok.length) return;
+  QUIZ.splice(0, QUIZ.length, ...ok); renderDaily(); if (inited.quiz) Quiz.setup(); IDX = null;
+});
+if (window.parent !== window) { try { window.parent.postMessage({type:"fic-ready"}, "*"); } catch(e){} }
+renderHome(); initArchive(); renderEvents(); selectTool("ci"); route();
+requestAnimationFrame(() => { drawHero(); drawFeature(); });
+if (document.fonts) document.fonts.ready.then(() => { drawHero(); drawFeature(); });
+</script>
+</body>
+</html>
